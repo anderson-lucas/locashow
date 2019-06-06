@@ -85,12 +85,13 @@ table.table td {
 }
 
 .form-group {
-  margin-bottom: 10px !important;
+  margin-bottom: 20px !important;
+  width: 100%;
 }
 
 .form-group label {
   font-weight: 600;
-  margin-bottom: 5px !important;
+  margin-bottom: 10px !important;
 }
 
 .form-control {
@@ -100,12 +101,22 @@ table.table td {
   line-height: 1.5;
   border: 1px solid #ced4da;
   border-radius: 5px;
+  width: -webkit-fill-available;
+}
+
+select.form-control {
+  padding: 10px 13px !important;
+}
+
+input.form-control.has-error {
+  border: 1px solid #a00000 !important;
 }
 
 .alert {
-  padding: 10px;
+  padding: 5px;
   border: 1px #a5a0a0 solid;
   border-radius: 3px;
+  width: -webkit-fill-available;
 }
 
 .alert.alert-error {
@@ -118,6 +129,12 @@ table.table td {
   background-color: #2f9432;
   color: #ffffff;
   border-color: #125f18;
+}
+
+.alert.alert-info {
+  background-color: #147da0;
+  color: #ffffff;
+  border-color: #004f69;
 }
 
 .mT-10 {margin-top: 10px !important;}
@@ -147,4 +164,9 @@ div.search input {
 
 .search > button {
   margin-left: 10px;
+}
+
+label.required::after {
+  content: " *";
+  color: red;
 }

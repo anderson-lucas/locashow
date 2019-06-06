@@ -11,6 +11,11 @@
         'uf' => $_POST['uf'],
     ];
 
+    echo '<pre>';
+    print_r($dados);
+    echo '</pre>';
+    exit;
+
     require '../database.php';
 
     if ($dados['id'] == 0) {

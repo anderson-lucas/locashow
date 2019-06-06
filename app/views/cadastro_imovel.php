@@ -89,23 +89,14 @@
   <a href="sistema.php?page=imoveis" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
 </div>
 
-<style type="text/css">
-  .form-control {
-    width: 50%;
-  }
-
-  .alert {
-    width: 50%;
-  }
-</style>
-
 <form class="form-default" method="POST" action="app/controllers/ImovelController.php">
 
   <input type="hidden" name="id" value="<?php echo $imovel['id']; ?>">
 
   <div class="form-group">
-    <label>Cliente</label>
-    <select id="cliente_id" name="cliente_id" class="form-control mT-5">
+    <label class="required">Cliente</label>
+    <select id="cliente_id" name="cliente_id" class="form-control mT-5" required>
+      <option value="">Selecione um cliente</option>
       <?php foreach ($clientes as $c) { ?>
       <option value="<?php echo $c['id']; ?>" <?php echo $c['id']==$imovel['cliente_id'] ? 'selected' : ''; ?>>
         <?php echo $c['nome']; ?>
@@ -115,18 +106,18 @@
   </div>
 
   <div class="form-group">
-    <label>Descrição</label>
+    <label class="required">Descrição</label>
     <input type="text" class="form-control mT-5" id="descricao" name="descricao" value="<?php echo $imovel['descricao']; ?>" required>
   </div>
 
   <div class="form-group">
-    <label>CEP</label>
+    <label class="required">CEP</label>
     <input type="text" class="form-control mT-5" id="cep" name="cep" value="<?php echo $imovel['cep']; ?>" required>
   </div>
 
   <div class="form-group">
-    <label>Logradouro</label>
-    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" value="<?php echo $imovel['logradouro']; ?>" required>
+    <label class="required">Logradouro</label>
+    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" value="<?php echo $imovel['logradouro']; ?>" required disabled>
   </div>
 
   <div class="form-group">
@@ -135,18 +126,19 @@
   </div>
 
   <div class="form-group">
-    <label>Bairro</label>
-    <input type="text" class="form-control mT-5" id="bairro" name="bairro" value="<?php echo $imovel['bairro']; ?>" required>
+    <label class="required">Bairro</label>
+    <input type="text" class="form-control mT-5" id="bairro" name="bairro" value="<?php echo $imovel['bairro']; ?>" required disabled>
   </div>
 
   <div class="form-group">
-    <label>Localidade</label>
-    <input type="text" class="form-control mT-5" id="localidade" name="localidade" value="<?php echo $imovel['localidade']; ?>" required>
+    <label class="required">Localidade</label>
+    <input type="text" class="form-control mT-5" id="localidade" name="localidade" value="<?php echo $imovel['localidade']; ?>" required disabled>
   </div>
 
   <div class="form-group">
-    <label>Estado</label>
-    <select id="uf" name="uf" class="form-control mT-5">
+    <label class="required">Estado</label>
+    <select id="uf" name="uf" class="form-control mT-5" required disabled>
+      <option value="">Selecione um estado</option>
       <?php foreach ($estados as $sigla => $e) { ?>
       <option value="<?php echo $sigla; ?>" <?php echo $sigla==$imovel['uf'] ? 'selected' : ''; ?>>
         <?php echo $e; ?>
@@ -159,3 +151,5 @@
     <button type="submit" class="btn btn-save">Salvar</button> 
   </div>
 </form>
+
+<script src="js/imoveis/cadastroImovel.js"></script>

@@ -10,11 +10,20 @@ var hideLoading = function() {
 }
 
 var md5 = function(value) {
-	return CryptoJS.MD5(value);
+  return CryptoJS.MD5(value);
+}
+
+var getViaCep = function(cep) {
+  var promise = $.ajax({
+    url: `https://viacep.com.br/ws/${cep}/json/`,
+    type: 'GET'
+  });
+
+  return promise;
 }
 
 $(function () {
-	$("#search").keypress(function(event) {
-		if (event.keyCode === 13) search();
-	});
+  $("#search").keypress(function(event) {
+    if (event.keyCode === 13) search();
+  });
 });
