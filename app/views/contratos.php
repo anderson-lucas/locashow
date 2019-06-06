@@ -26,9 +26,6 @@
   $contratos = [];
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
-      $row['descricao'] = utf8_encode($row['descricao']);
-      $row['tipo'] = $row['tipo'];
       $contratos[] = $row;
     }
     $result->free();

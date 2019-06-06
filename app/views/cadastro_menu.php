@@ -31,8 +31,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['nome'] = utf8_encode($row['nome']);
-        $row['link'] = utf8_encode($row['link']);
         $menu = $row;
       }
       $result->free();

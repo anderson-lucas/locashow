@@ -4,8 +4,6 @@
   $menus = [];
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
-      $row['link'] = utf8_encode($row['link']);
       $menus[] = $row;
     }
     $result->free();

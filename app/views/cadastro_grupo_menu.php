@@ -13,7 +13,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['nome'] = utf8_encode($row['nome']);
         $grupo = $row;
       }
       $result->free();
@@ -27,7 +26,6 @@
                 FROM menu";
   if ($result = $mysqli->query($sql_menus)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
       $menus[] = $row;
     }
     $result->free();

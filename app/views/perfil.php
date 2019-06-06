@@ -14,7 +14,6 @@
 
   if (count($usuario) == 0) header('Location: sistema.php?page=home');
 
-
   $code = 0;
   if (isset($_GET['code'])) {
     $code = $_GET['code'];

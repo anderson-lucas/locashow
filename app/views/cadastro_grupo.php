@@ -28,7 +28,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['nome'] = utf8_encode($row['nome']);
         $grupo = $row;
       }
       $result->free();

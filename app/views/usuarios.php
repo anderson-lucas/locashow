@@ -3,9 +3,6 @@
   $usuarios = [];
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
-      $row['email'] = utf8_encode($row['email']);
-      $row['login'] = utf8_encode($row['login']);
       $usuarios[] = $row;
     }
     $result->free();

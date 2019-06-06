@@ -31,10 +31,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['nome'] = utf8_encode($row['nome']);
-        $row['cpf_cnpj'] = utf8_encode($row['cpf_cnpj']);
-        $row['email'] = utf8_encode($row['email']);
-        $row['telefone'] = utf8_encode($row['telefone']);
         $cliente = $row;
       }
       $result->free();

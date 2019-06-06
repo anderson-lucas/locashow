@@ -30,9 +30,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['login'] = utf8_encode($row['login']);
-        $row['email'] = utf8_encode($row['email']);
-        $row['nome'] = utf8_encode($row['nome']);
         $usuario = $row;
       }
       $result->free();

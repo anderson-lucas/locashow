@@ -44,10 +44,6 @@
   $sql = "SELECT * FROM cliente";
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
-      $row['cpf_cnpj'] = utf8_encode($row['cpf_cnpj']);
-      $row['email'] = utf8_encode($row['email']);
-      $row['telefone'] = utf8_encode($row['telefone']);
       $clientes[] = $row;
     }
     $result->free();
@@ -56,8 +52,7 @@
   $imoveis = [];
   $sql = "SELECT upper(left(sha1(id), 8)) as codigo, imovel.* FROM imovel ORDER BY created_at DESC, descricao ASC";
   if ($result = $mysqli->query($sql)) {
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {      
-      $row['descricao'] = utf8_encode($row['descricao']);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
       $imoveis[] = $row;
     }
     $result->free();

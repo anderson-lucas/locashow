@@ -20,11 +20,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['descricao'] = utf8_encode($row['descricao']);
-        $row['logradouro'] = utf8_encode($row['logradouro']);
-        $row['complemento'] = utf8_encode($row['complemento']);
-        $row['bairro'] = utf8_encode($row['bairro']);
-        $row['localidade'] = utf8_encode($row['localidade']);
         $imovel = $row;
       }
       $result->free();

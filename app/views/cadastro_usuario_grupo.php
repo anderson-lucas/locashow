@@ -8,8 +8,6 @@
         exit;
       }
       while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $row['nome'] = utf8_encode($row['nome']);
-        $row['login'] = utf8_encode($row['login']);
         $usuario = $row;
       }
       $result->free();
@@ -23,7 +21,6 @@
                 FROM grupo";
   if ($result = $mysqli->query($sql_menus)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $row['nome'] = utf8_encode($row['nome']);
       $grupos[] = $row;
     }
     $result->free();
