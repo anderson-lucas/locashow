@@ -29,7 +29,6 @@ if ($result = $mysqli->query($sql)) {
     }
 
     if (count($usuario) > 0) {
-        //criar sessao e redirecionar para o sistema
         session_start();
 
         $_SESSION = [
@@ -44,7 +43,6 @@ if ($result = $mysqli->query($sql)) {
         header('Location: ../../sistema.php?page=home');
         exit;
     } else {
-        //redirecionar de volta para o login, informando usuario ou senha incorretos;
         header('Location: ../../login.php?error=1');
         exit;
     }
