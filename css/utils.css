@@ -1,0 +1,150 @@
+html, body {
+  font-family: sans-serif;
+  overflow-y: auto;
+}
+
+table.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+table.table, th, td {
+  border: 1px solid #28282870;
+  white-space: nowrap;
+}
+
+table.table th {
+  padding: 10px;
+}
+
+table.table thead tr {
+  background-color: #0a0a0ae0;
+  color: white;
+}
+
+table.table td {
+  padding: 15px;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb2b2;
+  background-color: #fff;
+  color: #5a5757;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #e8e6e6; 
+}
+
+.btn-save {
+  background-color: #2f9432;
+  color: white;
+  border-color: #114604;
+}
+
+.btn-save:hover {
+  background-color: darkgreen;
+}
+
+.btn-edit {
+  background-color: #289ba7;
+  color: white;
+  border-color: #4f4f50;
+}
+
+.btn-edit:hover {
+  background-color: #147da0;
+}
+
+.btn-danger {
+  background-color: #f93f3f;
+  color: white;
+  border-color: #4f4f50;
+}
+
+.btn-danger:hover {
+  background-color: #c51313;
+}
+
+.form-group {
+  margin-bottom: 10px !important;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px !important;
+}
+
+.form-control {
+  display: block;
+  padding: 7px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.alert {
+  padding: 10px;
+  border: 1px #a5a0a0 solid;
+  border-radius: 3px;
+}
+
+.alert.alert-error {
+  background-color: #efb9b9;
+  color: #631717;
+  border-color: #631717;
+}
+
+.alert.alert-success {
+  background-color: #2f9432;
+  color: #ffffff;
+  border-color: #125f18;
+}
+
+.mT-10 {margin-top: 10px !important;}
+.mT-5 {margin-top: 5px !important;}
+
+.mB-10 {margin-bottom: 10px !important;}
+.mB-5 {margin-bottom: 5px !important;}
+
+.mL-10 {margin-left: 10px !important;}
+.mL-5 {margin-left: 5px !important;}
+
+.mR-10 {margin-right: 10px !important;}
+.mR-5 {margin-right: 5px !important;}
+
+.form-default {
+  width: 80%;
+}
+
+div.search {
+  float: right;
+  display: inline-flex;
+}
+
+div.search input {
+  width: 300px;
+}
+
+.search > button {
+  margin-left: 10px;
+}

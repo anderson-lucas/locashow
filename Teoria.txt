@@ -1,0 +1,29 @@
+Nomes: Anderson Lucas e Gabriel De Luca
+
+1 TEMA
+=======================
+Agenciadora de Imóveis (Locashow)
+
+Um sistema para uma agenciadora de imóveis gerenciar seus clientes, imóveis e gerar contratos com essas informações, tanto de locação, como de venda.
+
+2 JUSTIFICATIVA
+=======================
+Pensando em solucionar o problema de um possível cliente (pequena agenciadora de imóveis), que necessita de melhorias no processo de gerencimento das suas atividades.
+
+3 OBJETIVOS
+=======================
+Sentenças individuais, apresentadas em lista de marcadores, em quantidade mínima de quatro. Será listado
+itens obrigatórios no sistema para atender a demanda.
+- Possibilidade de acessar o sistema com usuário e senha
+- Cadastrar, Listar, Excluir e Editar clientes.
+- Cadastrar, Listar, Excluir e Editar imóveis.
+- Cadastrar, Listar, Excluir e Editar contratos.
+
+4 Modelo ER
+=======================
+Todas as tabelas fazem parte de ambos os projetos, web e desktop. Nessa primeira entrega, só estão sendo usadas as tabelas:
+usuario
+cliente
+imovel
+contrato
+
