@@ -55,32 +55,44 @@
 
   .fotos {
     margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 5px;
+    width: fit-content;
   }
 
   .div-image img {
-    width: 20%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     border: 1px solid #656565;
     margin: 5px;
-    min-width: 200px;
   }
 
   .div-image {
     position: relative;
-    display: inline;
+    display: inline-flex;
   }
 
   .remove-image {
-    right: 15px;
-    margin-top: 15px;
+    right: 5px;
+    bottom: 5px;
     position: absolute;
-    z-index: 999999;
+    border-radius: 0px;
   }
 </style>
 
-<div class="text-left">
-  <h2>Fotos</h2>
-</div>
+<form class="form-default" enctype="multipart/form-data" method="POST" action="app/controllers/ImovelImagemController.php">
+  <input type="hidden" name="imovel_id" value="<?php echo $imovel['id']; ?>">
+  
+  <div class="form-group">
+    <label>Inserir nova foto</label>
+    <input type="file" accept="image/jpeg" class="form-control mT-5" id="foto" name="foto" required>
+  </div>
+
+  <div class="form-group left">
+    <button type="submit" class="btn btn-save">Salvar</button> 
+  </div>
+</form>
 
 <?php if (count($imagens) > 0) { ?>
 <div class="fotos">
@@ -95,20 +107,6 @@
 Nenhuma foto cadastrada para esse imóvel.
 <br><br>
 <?php } ?>
-
-
-<form class="form-default" enctype="multipart/form-data" method="POST" action="app/controllers/ImovelImagemController.php">
-  <input type="hidden" name="imovel_id" value="<?php echo $imovel['id']; ?>">
-  
-  <div class="form-group">
-    <label>Inserir nova foto</label>
-    <input type="file" accept="image/jpeg" class="form-control mT-5" id="foto" name="foto" required>
-  </div>
-
-  <div class="form-group left">
-    <button type="submit" class="btn btn-save">Salvar</button> 
-  </div>
-</form>
 
 <script type="text/javascript">
   function deleteFoto(id) {

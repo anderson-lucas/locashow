@@ -12,11 +12,11 @@ $(function() {
         console.log(data);
         if (!data.erro) {
           $("#cep").removeClass("has-error");
-          $("#logradouro").val(data.logradouro);
-          $("#complemento").val(data.complemento);
-          $("#bairro").val(data.bairro);
-          $("#localidade").val(data.localidade);
-          $("#uf").val(data.uf);
+          $("#logradouro").attr('value', data.logradouro);
+          $("#complemento").attr('value', data.complemento);
+          $("#bairro").attr('value', data.bairro);
+          $("#localidade").attr('value', data.localidade);
+          $("#uf").attr('value', data.uf);
         } else {
           $("#cep").addClass("has-error");
           $("#logradouro").val("");
@@ -27,9 +27,26 @@ $(function() {
         }
       });
     }
-
-    //console.log(this.value.length);
   });
 
-  
+  // $("#btn-submit").click(function(e) {
+  //   e.preventDefault();
+  //   var data = {};
+  //   $("#form_imovel").serializeArray().map(function(x){
+  //     data[x.name] = x.value;
+  //   });
+
+  //   console.log(data);
+
+  //   // $.ajax({
+  //   //   url: API_URL + 'clientes',
+  //   //   type: 'post',
+  //   //   dataType: 'application/json',
+  //   //   data: data
+  //   // });
+
+  //   //window.location = 'sistema.php?page=clientes';
+  // });
+
+  // console.log('opa');
 });

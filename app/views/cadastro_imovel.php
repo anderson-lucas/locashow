@@ -89,7 +89,7 @@
   <a href="sistema.php?page=imoveis" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
 </div>
 
-<form class="form-default" method="POST" action="app/controllers/ImovelController.php">
+<form id="form_imovel" class="form-default" method="POST" action="app/controllers/ImovelController.php">
 
   <input type="hidden" name="id" value="<?php echo $imovel['id']; ?>">
 
@@ -117,7 +117,7 @@
 
   <div class="form-group">
     <label class="required">Logradouro</label>
-    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" value="<?php echo $imovel['logradouro']; ?>" required disabled>
+    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" value="<?php echo $imovel['logradouro']; ?>" required>
   </div>
 
   <div class="form-group">
@@ -127,17 +127,17 @@
 
   <div class="form-group">
     <label class="required">Bairro</label>
-    <input type="text" class="form-control mT-5" id="bairro" name="bairro" value="<?php echo $imovel['bairro']; ?>" required disabled>
+    <input type="text" class="form-control mT-5" id="bairro" name="bairro" value="<?php echo $imovel['bairro']; ?>" required>
   </div>
 
   <div class="form-group">
     <label class="required">Localidade</label>
-    <input type="text" class="form-control mT-5" id="localidade" name="localidade" value="<?php echo $imovel['localidade']; ?>" required disabled>
+    <input type="text" class="form-control mT-5" id="localidade" name="localidade" value="<?php echo $imovel['localidade']; ?>" required>
   </div>
 
   <div class="form-group">
     <label class="required">Estado</label>
-    <select id="uf" name="uf" class="form-control mT-5" required disabled>
+    <select id="uf" name="uf" class="form-control mT-5" required>
       <option value="">Selecione um estado</option>
       <?php foreach ($estados as $sigla => $e) { ?>
       <option value="<?php echo $sigla; ?>" <?php echo $sigla==$imovel['uf'] ? 'selected' : ''; ?>>
@@ -148,7 +148,7 @@
   </div>
 
   <div class="form-group left">
-    <button type="submit" class="btn btn-save">Salvar</button> 
+    <button type="submit" id="btn-submit" class="btn btn-save">Salvar</button> 
   </div>
 </form>
 

@@ -9,8 +9,9 @@
   <meta charset="utf-8">
   <title>LOCASHOW | Login</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/utils.css?v=<?php echo date('YmdHis'); ?>">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/login.css?v=<?php echo date('YmdHis'); ?>"> 
+  <link rel="stylesheet" type="text/css" href="css/interface.css?v=<?php echo date('YmdHis'); ?>">
+  <link rel="stylesheet" type="text/css" href="css/utils.css?v=<?php echo date('YmdHis'); ?>">
+  <link rel="stylesheet" type="text/css" href="css/login.css?v=<?php echo date('YmdHis'); ?>"> 
 </head>
 <body>
   <form class="form-login" method="POST" action="app/auth/authenticate.php">

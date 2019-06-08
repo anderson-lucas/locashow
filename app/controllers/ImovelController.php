@@ -2,19 +2,14 @@
     $dados = [
         'id' => $_POST['id'],
         'cliente_id' => $_POST['cliente_id'],
-        'descricao' => utf8_decode($_POST['descricao']),
-        'cep' => utf8_decode($_POST['cep']),
-        'logradouro' => utf8_decode($_POST['logradouro']),
-        'complemento' => utf8_decode($_POST['complemento']),
-        'bairro' => utf8_decode($_POST['bairro']),
-        'localidade' => utf8_decode($_POST['localidade']),
+        'descricao' => $_POST['descricao'],
+        'cep' => $_POST['cep'],
+        'logradouro' => $_POST['logradouro'],
+        'complemento' => $_POST['complemento'],
+        'bairro' => $_POST['bairro'],
+        'localidade' => $_POST['localidade'],
         'uf' => $_POST['uf'],
     ];
-
-    echo '<pre>';
-    print_r($dados);
-    echo '</pre>';
-    exit;
 
     require '../database.php';
 

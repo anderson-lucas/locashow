@@ -24,6 +24,8 @@ function deleteCliente(id) {
 
     promise.then(function() {
       loadTable();
+    }, function(error) {
+      alert(error);
     });
   }
 }
