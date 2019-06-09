@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 
 html {
   font-family: sans-serif;
@@ -15,7 +16,7 @@ body {
   width: 100%;
 }
 
-.header h1 {
+h1 {
   font-family: 'Russo One', sans-serif;
   font-weight: 600;
   font-size: 26px;
@@ -36,11 +37,13 @@ body {
 }
 
 .content {
+  font-family: 'Titillium Web', sans-serif;
   overflow: overlay;
   height: 100%;
   width: calc(100vw - 300px);
-  padding: 5px 30px;
+  padding: 5px 30px 20px 30px;
   background-color: #fbfafa;
+  box-sizing: border-box;
 }
 
 .menu-right {
@@ -57,11 +60,11 @@ body {
 
 .menu-right a:hover {
   transition: 0.4s;
-  color: #fbfafa;
+  color: #1716166e;
 }
 
 .bg-interface {
-  background-color: #e48522;
+  background-color: #ff8200eb;
 }
 
 img.logo {
@@ -87,7 +90,7 @@ img.logo {
 .ul-menu li {
   padding: 10px 20px;
   text-transform: uppercase;
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .ul-menu li:hover {

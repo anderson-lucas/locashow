@@ -1,7 +1,7 @@
 const API_URL = '/locashow/api.php/';
 
 var showLoading = function() {
-  var row = `<tr id="loading"><td class="text-center" colspan="100"><img src="/locashow/assets/loading.gif"></td></tr>`; 
+  var row = `<tr id="loading"><td class="text-center" colspan="100"><img width="10%" src="/locashow/assets/loading.gif"></td></tr>`; 
   $("#tabela_clientes tbody").append(row);
 }
 
