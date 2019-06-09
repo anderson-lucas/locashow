@@ -7,6 +7,7 @@ require 'app/database.php';
 
 // SERVICES
 require 'api/ClienteService.php';
+require 'api/ImovelService.php';
 require 'api/GrupoMenuService.php';
 require 'api/UsuarioGrupoService.php';
 require 'api/ImovelImagemService.php';
@@ -21,6 +22,10 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if (! in_array($method, $allowed_methods)) {
 	return response(['message' => 'Method Not Allowed'], 405);
+}
+
+if (isset($request[ID])) {
+	$request[ID] = str_replace('%20', ' ', $request[ID]);
 }
 
 switch ($request[PAGE]) {
@@ -38,7 +43,8 @@ switch ($request[PAGE]) {
 
 		if ($method == 'DELETE') {
 			if (isset($request[ID])) {
-				return response(deleteCliente($request[ID]));
+				$return = deleteCliente($request[ID]);
+				return response(['message' => $return['message']], $return['status']);
 			} else {
 				return response(['message' => 'Bad Request'], 400);
 			}
@@ -49,6 +55,38 @@ switch ($request[PAGE]) {
 			$filter = NULL;
 			if (isset($request[ID])) $filter = $request[ID];
 			return response(getClienteSearch($filter));
+		}
+		break;
+	case 'cliente_endereco':
+		if ($method == 'DELETE') {
+			if (isset($request[ID])) {
+				return response(deleteEndereco($request[ID]));
+			} else {
+				return response(['message' => 'Bad Request'], 400);
+			}
+		}
+		break;
+	case 'imoveis':
+		if ($method == 'GET') {
+			$id = NULL;
+			if (isset($request[ID])) $id = $request[ID];
+			return response(getImovel($id));
+		}
+
+		if ($method == 'DELETE') {
+			if (isset($request[ID])) {
+				$return = deleteImovel($request[ID]);
+				return response(['message' => $return['message']], $return['status']);
+			} else {
+				return response(['message' => 'Bad Request'], 400);
+			}
+		}
+		break;
+	case 'imoveisSearch':
+		if ($method == 'GET') {
+			$filter = NULL;
+			if (isset($request[ID])) $filter = $request[ID];
+			return response(getImovelSearch($filter));
 		}
 		break;
 	case 'grupo-menu':
@@ -90,20 +128,12 @@ switch ($request[PAGE]) {
 			}
 		}
 		break;
-	case 'cliente_endereco':
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				return response(deleteEndereco($request[ID]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
 	default:
 		response(['message' => 'Not Found'], 404);
 		break;
 }
 
 function response($data, $status = 200) {
+	http_response_code($status);
 	echo json_encode(['status' => $status, 'data' => $data]);
 }

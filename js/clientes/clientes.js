@@ -25,7 +25,7 @@ function deleteCliente(id) {
     promise.then(function() {
       loadTable();
     }, function(error) {
-      alert(error);
+      alert(error.responseJSON.data.message);
     });
   }
 }
@@ -66,9 +66,6 @@ function populateTable(data) {
               <a href="sistema.php?page=cadastro_cliente&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
-              <!-- <a href="sistema.php?page=cadastro_cliente&id=${md5(data.id)}&delete=1" class="btn btn-danger" title="EXCLUIR">
-                <i class="fas fa-trash-alt"></i>
-              </a> -->
               <button class="btn btn-danger" title="EXCLUIR" onClick="deleteCliente(${data.id})">
                 <i class="fas fa-trash-alt"></i>
               </button> 

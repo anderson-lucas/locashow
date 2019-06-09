@@ -41,7 +41,7 @@
         <td><?php echo $g['nome']; ?></td>
         <td class="text-center"><?php echo date('d/m/Y H:i', strtotime($g['created_at'])); ?></td>
         <td class="text-center">
-          <a href="sistema.php?page=cadastro_grupo_menu&id=<?php echo md5($g['id']); ?>" class="btn btn-save" title="PERMISSÕES">
+          <a href="sistema.php?page=cadastro_grupo_menu&id=<?php echo md5($g['id']); ?>" class="btn btn-warning" title="PERMISSÕES">
             <i class="fas fa-unlock-alt"></i>
           </a>
           <a href="sistema.php?page=cadastro_grupo&id=<?php echo md5($g['id']); ?>" class="btn btn-edit" title="EDITAR">

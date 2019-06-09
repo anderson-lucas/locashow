@@ -5,7 +5,7 @@ table.table {
 }
 
 table.table, th, td {
-  border: 1px solid #28282870;
+  border: 1px solid #b5b2b24f;
   white-space: nowrap;
 }
 
@@ -14,7 +14,7 @@ table.table th {
 }
 
 table.table thead tr {
-  background-color: #0a0a0ae0;
+  background-color: #333333e0;
   color: white;
 }
 
@@ -78,6 +78,15 @@ table.table td {
 
 .btn-danger:hover {
   background-color: #c51313;
+}
+
+.btn-warning {
+  background-color: #ffd500c7;
+  color: black;
+}
+
+.btn-warning:hover {
+  background-color: #ffd400;
 }
 
 .form-group {

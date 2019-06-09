@@ -44,7 +44,7 @@
         <td class="text-center"><?php echo $u['email']; ?></td>
         <td class="text-center"><?php echo date('d/m/Y H:i', strtotime($u['created_at'])); ?></td>
         <td class="text-center">
-          <a href="sistema.php?page=cadastro_usuario_grupo&id=<?php echo md5($u['id']); ?>" class="btn btn-save" title="GRUPOS">
+          <a href="sistema.php?page=cadastro_usuario_grupo&id=<?php echo md5($u['id']); ?>" class="btn btn-warning" title="GRUPOS">
             <i class="fas fa-user-cog"></i>
           </a>
           <a href="sistema.php?page=cadastro_usuario&id=<?php echo md5($u['id']); ?>" class="btn btn-edit" title="EDITAR">

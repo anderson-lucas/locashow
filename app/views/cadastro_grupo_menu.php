@@ -58,11 +58,11 @@
         <td class="text-center">
           <?php if (! $m['vinculado']) { ?>
           <button class="btn btn-save" title="ADICIONAR" onclick="addMenu(<?php echo $m['id'] ?>)">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-check"></i>
           </button>
           <?php } else { ?>
           <button class="btn btn-danger" title="EXCLUIR" onclick="deleteMenu(<?php echo $m['id'] ?>)">
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-ban"></i>
           </button>
           <?php } ?>
         </td>

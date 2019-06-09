@@ -79,9 +79,15 @@ function deleteCliente($id)
     global $mysqli;
 
     $sql = "DELETE FROM cliente WHERE id = {$id}";
-    if ($mysqli->query($sql)) {
-        return ['message' => 'Deletado com sucesso!'];
+
+    $status = 200;
+    $message = [];
+    if (! $mysqli->query($sql)) {
+        $message = 'O registro não pode ser deletado!';
+        $status = 400;
+    } else {
+        $message = 'Deletado com sucesso!';
     }
 
-    return ['message' => 'Ocorreu um erro ao deletar o registro!'];
+    return ['message' => $message, 'status' => $status];
 }

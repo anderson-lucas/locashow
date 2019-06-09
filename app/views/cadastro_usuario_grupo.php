@@ -53,11 +53,11 @@
         <td class="text-center">
           <?php if (! $g['vinculado']) { ?>
           <button class="btn btn-save" title="ADICIONAR" onclick="addGrupo(<?php echo $g['id'] ?>)">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-check"></i>
           </button>
           <?php } else { ?>
           <button class="btn btn-danger" title="EXCLUIR" onclick="deleteGrupo(<?php echo $g['id'] ?>)">
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-ban"></i>
           </button>
           <?php } ?>
         </td>
