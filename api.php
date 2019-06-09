@@ -8,9 +8,10 @@ require 'app/database.php';
 // SERVICES
 require 'api/ClienteService.php';
 require 'api/ImovelService.php';
+require 'api/ImovelImagemService.php';
+require 'api/ContratoService.php';
 require 'api/GrupoMenuService.php';
 require 'api/UsuarioGrupoService.php';
-require 'api/ImovelImagemService.php';
 require 'api/ClienteEnderecoService.php';
 
 const PAGE = 3;
@@ -89,6 +90,38 @@ switch ($request[PAGE]) {
 			return response(getImovelSearch($filter));
 		}
 		break;
+	case 'imovel_imagens':
+		if ($method == 'DELETE') {
+			if (isset($request[ID])) {
+				return response(deleteImovelImagem($request[ID]));
+			} else {
+				return response(['message' => 'Bad Request'], 400);
+			}
+		}
+		break;
+	case 'contratos':
+		if ($method == 'GET') {
+			$id = NULL;
+			if (isset($request[ID])) $id = $request[ID];
+			return response(getContrato($id));
+		}
+
+		if ($method == 'DELETE') {
+			if (isset($request[ID])) {
+				$return = deleteContrato($request[ID]);
+				return response(['message' => $return['message']], $return['status']);
+			} else {
+				return response(['message' => 'Bad Request'], 400);
+			}
+		}
+		break;
+	case 'contratosSearch':
+		if ($method == 'GET') {
+			$filter = NULL;
+			if (isset($request[ID])) $filter = $request[ID];
+			return response(getImovelSearch($filter));
+		}
+		break;
 	case 'grupo-menu':
 		if ($method == 'POST') {
 			$return = createGrupoMenu($_POST);
@@ -114,15 +147,6 @@ switch ($request[PAGE]) {
 			$ids = explode('/', $request[ID]);
 			if (isset($request[ID])) {
 				return response(deleteUsuarioGrupo($ids[0], $ids[1]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'imovel_imagens':
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				return response(deleteImovelImagem($request[ID]));
 			} else {
 				return response(['message' => 'Bad Request'], 400);
 			}
