@@ -24,9 +24,9 @@ function getContrato($id = NULL, $filter = NULL)
                 , co.valor
                 , DATE_FORMAT(co.created_at, '%d/%m/%Y %H:%i:%s') AS created
             FROM contrato as co
-            {$where} 
             JOIN cliente as cl ON cl.id = co.cliente_id
             JOIN imovel as im ON im.id = co.imovel_id
+            {$where}
             ORDER BY im.created_at DESC";
 
     $contratos = [];

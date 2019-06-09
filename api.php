@@ -119,7 +119,7 @@ switch ($request[PAGE]) {
 		if ($method == 'GET') {
 			$filter = NULL;
 			if (isset($request[ID])) $filter = $request[ID];
-			return response(getImovelSearch($filter));
+			return response(getContratoSearch($filter));
 		}
 		break;
 	case 'grupo-menu':
