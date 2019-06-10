@@ -22,7 +22,7 @@
     <?php } ?>
 
     <div class="text-center">
-      <p class="titulo-login">Acessar o sistema</p>
+      <img src="assets/ls-logo-dark.png" class="img-logo">
     </div>
 
     <div class="form-group">
@@ -34,7 +34,7 @@
     </div>
     
     <div class="form-group text-center">
-      <button type="submit" class="btn">Entrar</button> 
+      <button type="submit" class="btn btn-login">Acessar</button> 
     </div>
   </form>
 </body>
