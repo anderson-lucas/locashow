@@ -171,7 +171,7 @@
   function deleteEndereco(id) {
     if (confirm('Deseja realmente excluir esse endereço?')) {
       $.ajax({
-        url: API_URL + 'cliente_endereco/'+id,
+        url: API_URL + 'cliente-endereco/'+id,
         type: 'DELETE',
         success: function(result) {
           alert('Excluído com sucesso!');

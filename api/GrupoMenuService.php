@@ -22,17 +22,16 @@ function createGrupoMenu($data)
         $message = 'Sucesso!';
     }
 
-    return ['message' => $message, 'status' => $status];
+    return ['data' => $message, 'status' => $status];
 }
 
-function deleteGrupoMenu($grupo_id, $menu_id)
+function deleteGrupoMenu($parameters)
 {
-    global $mysqli;
+    $params = explode('/', $parameters);
+    $grupo_id = $params[0];
+    $menu_id = $params[1];
 
-    $sql = "DELETE FROM grupo_menu WHERE grupo_id = {$grupo_id} AND menu_id = {$menu_id}";
-    if ($mysqli->query($sql)) {
-        return ['message' => 'Deletado com sucesso!'];
-    }
-
-    return ['message' => 'Ocorreu um erro ao deletar o registro!'];
+    $where = "WHERE grupo_id = {$grupo_id} AND menu_id = {$menu_id}";
+    $return = delete('grupo_menu', $where);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }

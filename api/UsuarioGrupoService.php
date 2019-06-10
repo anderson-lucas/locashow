@@ -22,17 +22,16 @@ function createUsuarioGrupo($data)
         $message = 'Sucesso!';
     }
 
-    return ['message' => $message, 'status' => $status];
+    return ['data' => $message, 'status' => $status];
 }
 
-function deleteUsuarioGrupo($usuario_id, $grupo_id)
+function deleteUsuarioGrupo($parameters)
 {
-    global $mysqli;
+    $params = explode('/', $parameters);
+    $usuario_id = $params[0];
+    $grupo_id = $params[1];
 
-    $sql = "DELETE FROM usuario_grupo WHERE usuario_id = {$usuario_id} AND grupo_id = {$grupo_id}";
-    if ($mysqli->query($sql)) {
-        return ['message' => 'Deletado com sucesso!'];
-    }
-
-    return ['message' => 'Ocorreu um erro ao deletar o registro!'];
+    $where = "WHERE usuario_id = {$usuario_id} AND grupo_id = {$grupo_id}";
+    $return = delete('usuario_grupo', $where);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }

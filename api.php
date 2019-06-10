@@ -2,162 +2,37 @@
 
 header('Content-type: application/json');
 
-// DATABASE
 require 'app/database.php';
 
-// SERVICES
-require 'api/ClienteService.php';
-require 'api/ImovelService.php';
-require 'api/ImovelImagemService.php';
-require 'api/ContratoService.php';
-require 'api/GrupoMenuService.php';
-require 'api/UsuarioGrupoService.php';
-require 'api/ClienteEnderecoService.php';
+const ROUTE = 3;
+const PARAMS = 4;
 
-const PAGE = 3;
-const ID = 4;
+require 'routes.php';
 
-$allowed_methods = ['GET', 'POST', 'DELETE'];
 $request = explode('/', $_SERVER['REQUEST_URI'], 5);
-$method = $_SERVER['REQUEST_METHOD'];
+$requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if (! in_array($method, $allowed_methods)) {
-	return response(['message' => 'Method Not Allowed'], 405);
+if (isset($request[PARAMS])) {
+	$request[PARAMS] = str_replace('%20', ' ', $request[PARAMS]);
 }
 
-if (isset($request[ID])) {
-	$request[ID] = str_replace('%20', ' ', $request[ID]);
+$params = $requestMethod == 'POST' ? $_POST : (isset($request[PARAMS]) ? $request[PARAMS] : NULL);
+
+$found = FALSE;
+foreach ($routes as $group => $routeList) {
+	foreach ($routeList as $route) {
+		if ($requestMethod == $route['method'] && $request[ROUTE] == $route['route']) {
+			$found = TRUE;
+			require $route['service'];
+			$return = call_user_func($route['function'], $params);
+			response($return['data'], $return['status']);
+		}
+	}
 }
 
-switch ($request[PAGE]) {
-	case 'clientes':
-		if ($method == 'GET') {
-			$id = NULL;
-			if (isset($request[ID])) $id = $request[ID];
-			return response(getCliente($id));
-		}
+if (! $found) response(NULL, 404);
 
-		if ($method == 'POST') {
-			$return = createOrUpdateCliente($_POST);
-			return response(['message' => $return['message']], $return['status']);
-		}
-
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				$return = deleteCliente($request[ID]);
-				return response(['message' => $return['message']], $return['status']);
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'clientesSearch':
-		if ($method == 'GET') {
-			$filter = NULL;
-			if (isset($request[ID])) $filter = $request[ID];
-			return response(getClienteSearch($filter));
-		}
-		break;
-	case 'cliente_endereco':
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				return response(deleteEndereco($request[ID]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'imoveis':
-		if ($method == 'GET') {
-			$id = NULL;
-			if (isset($request[ID])) $id = $request[ID];
-			return response(getImovel($id));
-		}
-
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				$return = deleteImovel($request[ID]);
-				return response(['message' => $return['message']], $return['status']);
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'imoveisSearch':
-		if ($method == 'GET') {
-			$filter = NULL;
-			if (isset($request[ID])) $filter = $request[ID];
-			return response(getImovelSearch($filter));
-		}
-		break;
-	case 'imovel_imagens':
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				return response(deleteImovelImagem($request[ID]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'contratos':
-		if ($method == 'GET') {
-			$id = NULL;
-			if (isset($request[ID])) $id = $request[ID];
-			return response(getContrato($id));
-		}
-
-		if ($method == 'DELETE') {
-			if (isset($request[ID])) {
-				$return = deleteContrato($request[ID]);
-				return response(['message' => $return['message']], $return['status']);
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'contratosSearch':
-		if ($method == 'GET') {
-			$filter = NULL;
-			if (isset($request[ID])) $filter = $request[ID];
-			return response(getContratoSearch($filter));
-		}
-		break;
-	case 'grupo-menu':
-		if ($method == 'POST') {
-			$return = createGrupoMenu($_POST);
-			return response(['message' => $return['message']], $return['status']);
-		}
-
-		if ($method == 'DELETE') {
-			$ids = explode('/', $request[ID]);
-			if (isset($request[ID])) {
-				return response(deleteGrupoMenu($ids[0], $ids[1]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	case 'usuario-grupo':
-		if ($method == 'POST') {
-			$return = createUsuarioGrupo($_POST);
-			return response(['message' => $return['message']], $return['status']);
-		}
-
-		if ($method == 'DELETE') {
-			$ids = explode('/', $request[ID]);
-			if (isset($request[ID])) {
-				return response(deleteUsuarioGrupo($ids[0], $ids[1]));
-			} else {
-				return response(['message' => 'Bad Request'], 400);
-			}
-		}
-		break;
-	default:
-		response(['message' => 'Not Found'], 404);
-		break;
-}
-
-function response($data, $status = 200) {
+function response($data = NULL, $status = 200) {
 	http_response_code($status);
 	echo json_encode(['status' => $status, 'data' => $data]);
 }

@@ -2,8 +2,6 @@
 
 function getContrato($id = NULL, $filter = NULL)
 {
-    global $mysqli;
-
     $where = '';
     if ($id) {
         $where = "WHERE co.id = {$id}";
@@ -28,16 +26,9 @@ function getContrato($id = NULL, $filter = NULL)
             JOIN imovel as im ON im.id = co.imovel_id
             {$where}
             ORDER BY im.created_at DESC";
+    $contratos = get($sql);
 
-    $contratos = [];
-    if ($result = $mysqli->query($sql)) {
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $contratos[] = $row;
-        }
-        $result->free();
-    }
-
-    return $contratos;
+    return ['data' => $contratos, 'status' => 200]; 
 }
 
 function getContratoSearch($filter = '')
@@ -45,20 +36,15 @@ function getContratoSearch($filter = '')
     return getContrato(NULL, $filter);
 }
 
+function setContrato($data)
+{
+    $return = set('contrato', $data);
+    return ['data' => $return['message'], 'status' => $return['status']];
+}
+
 function deleteContrato($id)
 {
-    global $mysqli;
-
-    $sql = "DELETE FROM contrato WHERE id = {$id}";
-
-    $status = 200;
-    $message = [];
-    if (! $mysqli->query($sql)) {
-        $message = 'O registro não pode ser deletado!';
-        $status = 400;
-    } else {
-        $message = 'Deletado com sucesso!';
-    }
-
-    return ['message' => $message, 'status' => $status];
+    $where = "WHERE id = {$id}";
+    $return = delete('contrato', $where);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }

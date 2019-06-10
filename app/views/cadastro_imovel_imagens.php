@@ -112,7 +112,7 @@ Nenhuma foto cadastrada para esse imóvel.
   function deleteFoto(id) {
     if (confirm('Deseja realmente excluir essa foto?')) {
       $.ajax({
-        url: API_URL + 'imovel_imagens/'+id,
+        url: API_URL + 'imovel-imagens/'+id,
         type: 'DELETE',
         success: function(result) {
           alert('Excluído com sucesso!');

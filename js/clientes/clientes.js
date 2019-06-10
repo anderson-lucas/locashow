@@ -25,7 +25,7 @@ function deleteCliente(id) {
     promise.then(function() {
       loadTable();
     }, function(error) {
-      alert(error.responseJSON.data.message);
+      alert(error.responseJSON.data);
     });
   }
 }

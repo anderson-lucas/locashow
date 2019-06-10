@@ -50,7 +50,7 @@ function populateTable(data) {
       data.map(function(data, index) {
         row += `
           <tr>
-            <td class="text-center">${index + 1}</td>
+            <td class="text-center">${data.codigo}</td>
             <td>${data.nome_cliente}</td>
             <td>${data.descricao}</td>
             <td class="text-center">${data.localidade}</td>

@@ -2,8 +2,6 @@
 
 function getImovel($id = NULL, $filter = NULL)
 {
-    global $mysqli;
-
     $where = '';
     if ($id) {
         $where = "WHERE imovel.id = {$id}";
@@ -22,16 +20,9 @@ function getImovel($id = NULL, $filter = NULL)
             JOIN cliente ON imovel.cliente_id = cliente.id
             {$where} 
             ORDER BY descricao";
+    $imoveis = get($sql);
 
-    $imoveis = [];
-    if ($result = $mysqli->query($sql)) {
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $imoveis[] = $row;
-        }
-        $result->free();
-    }
-
-    return $imoveis;
+    return ['data' => $imoveis, 'status' => 200]; 
 }
 
 function getImovelSearch($filter = '')
@@ -39,20 +30,15 @@ function getImovelSearch($filter = '')
     return getImovel(NULL, $filter);
 }
 
+function setImovel($data)
+{
+    $return = set('imovel', $data);
+    return ['data' => $return['message'], 'status' => $return['status']];
+}
+
 function deleteImovel($id)
 {
-    global $mysqli;
-
-    $sql = "DELETE FROM imovel WHERE id = {$id}";
-
-    $status = 200;
-    $message = [];
-    if (! $mysqli->query($sql)) {
-        $message = 'O registro não pode ser deletado!';
-        $status = 400;
-    } else {
-        $message = 'Deletado com sucesso!';
-    }
-
-    return ['message' => $message, 'status' => $status];
+    $where = "WHERE id = {$id}";
+    $return = delete('imovel', $where);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }
