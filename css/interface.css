@@ -97,3 +97,7 @@ img.logo {
   background-color: #fbfafa;
   transition: 0.4s;
 }
+
+*:focus {
+  outline: none;
+}

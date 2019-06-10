@@ -5,6 +5,14 @@ const POST = 'POST';
 const DELETE = 'DELETE';
 
 $routes = [
+    'login' => [
+        [
+            'method' => POST,
+            'route' => 'authenticate',
+            'function' => 'auth',
+            'service' => 'api/Authenticate.php'
+        ]
+    ],
     'clientes' => [
         [
             'method' => GET,

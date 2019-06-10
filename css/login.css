@@ -1,8 +1,7 @@
-html,body {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  font-family: 'Titillium Web', sans-serif;
 }
 
 body {
@@ -27,7 +26,7 @@ body {
 }
 
 .btn-login {
-  background-image: linear-gradient(to right, #c16026 0%, #c15126 51%, #c16026 100%);
+  background-image: linear-gradient(to right, #d41616 0%, #f92b2b9e 51%, #d41616 100%);
   color: #fff;
   text-transform: uppercase;
   border-radius: 13px;
@@ -35,6 +34,8 @@ body {
   padding: 15px;
   box-shadow: 0 0 20px #eee;
   opacity: 0.8;
+  font-family: 'Titillium Web', sans-serif;
+  transition: 0.5s;
 }
 
 .btn-login:hover {
@@ -47,9 +48,21 @@ body {
   border-radius: 13px;
   background-color: #fff0;
   padding: 10px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 ::placeholder {
   color: #333333;
   opacity: 0.8;
+}
+
+.form-login input.has-error {
+  border: 2px solid #ff0000cc !important;
+}
+
+small {
+  font-family: 'Titillium Web', sans-serif;
+  color: red;
+  font-weight: 600;
+  margin-top: 2px;
 }
