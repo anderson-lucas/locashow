@@ -43,7 +43,7 @@
         <td class="text-center"><?php echo $key+1; ?></td>
         <td><?php echo $m['nome']; ?></td>
         <td><?php echo $m['link']; ?></td>
-        <td class="text-center"><?php echo $m['icone']; ?></td>
+        <td class="text-center"><i class="<?php echo $m['icone']; ?>"></i> - <?php echo $m['icone']; ?></td>
         <td class="text-center"><?php echo $m['ordem']; ?></td>
         <td class="text-center"><?php echo date('d/m/Y H:i', strtotime($m['created_at'])); ?></td>
         <td class="text-center">
