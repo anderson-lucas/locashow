@@ -11,7 +11,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>LOCASHOW | <?php echo @strtoupper($_GET['page']); ?></title>
+  <title>LOCASHOW | <?php echo @strtoupper(str_replace('_', ' ', $_GET['page'])); ?></title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="css/utils.css?v=<?php echo date('YmdHis'); ?>">
   <link rel="stylesheet" type="text/css" href="css/interface.css?v=<?php echo date('YmdHis'); ?>">
