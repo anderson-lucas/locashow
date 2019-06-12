@@ -30,7 +30,7 @@
             $sql = "INSERT INTO imovel_imagem (imovel_id, full_path) VALUES ({$_POST['imovel_id']}, '{$full_path_insert}')";
             if ($result = $mysqli->query($sql)) {
                 $mysqli->close();
-                header('Location: ../../sistema.php?page=cadastro_imovel_imagens&id='.md5($_POST['imovel_id']));
+                header('Location: ../../sistema.php?page=cadastro_imovel_imagem&id='.md5($_POST['imovel_id']));
             } else {
                 echo "Erro ao inserir a foto!";
                 exit;
