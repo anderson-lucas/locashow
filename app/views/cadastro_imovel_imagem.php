@@ -110,18 +110,23 @@ Nenhuma foto cadastrada para esse imóvel.
 
 <script type="text/javascript">
   function deleteFoto(id) {
-    if (confirm('Deseja realmente excluir essa foto?')) {
-      $.ajax({
-        url: API_URL + 'imovel-imagens/'+id,
-        type: 'DELETE',
-        success: function(result) {
-          alert('Excluído com sucesso!');
+    swal({
+      title: "Deseja realmente excluir?",
+      icon: "warning",
+      buttons: ["Cancelar", "Sim"],
+      dangerMode: true,
+    })
+    .then(function(answer) {
+      if (answer) {
+        $.ajax({
+          url: API_URL + 'imovel-imagens/' + id,
+          type: 'DELETE'
+        }).done(function() {
           window.location.reload();
-        },
-        error: function(error) {
-          console.error(error);
-        }
-      });
-    }
-  } 
+        }).fail(function(error) {
+          swalError(error.responseJSON.data);
+        });
+      }
+    });
+  }
 </script>

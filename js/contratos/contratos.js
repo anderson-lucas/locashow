@@ -67,6 +67,9 @@ function populateTable(data) {
             <td class="text-right">R$ ${data.valor}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
+              <a href="sistema.php?page=cadastro_contrato_boleto&id=${md5(data.id)}" class="btn btn-save" title="BOLETOS">
+                <i class="fas fa-dollar-sign"></i>
+              </a>
               <a href="sistema.php?page=cadastro_contrato&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>

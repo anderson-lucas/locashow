@@ -1,4 +1,5 @@
-<?php 
+BOLETOS
+<!-- <?php 
   $endereco = [
     'id' => 0,
     'cliente_id' => $_GET['id'],
@@ -169,23 +170,18 @@
 
 <script type="text/javascript">
   function deleteEndereco(id) {
-    swal({
-      title: "Deseja realmente excluir?",
-      icon: "warning",
-      buttons: ["Cancelar", "Sim"],
-      dangerMode: true,
-    })
-    .then(function(answer) {
-      if (answer) {
-        $.ajax({
-          url: API_URL + 'cliente-endereco/' + id,
-          type: 'DELETE'
-        }).done(function() {
+    if (confirm('Deseja realmente excluir esse endereço?')) {
+      $.ajax({
+        url: API_URL + 'cliente-endereco/'+id,
+        type: 'DELETE',
+        success: function(result) {
+          alert('Excluído com sucesso!');
           window.location.reload();
-        }).fail(function(error) {
-          swalError(error.responseJSON.data);
-        });
-      }
-    });
-  }
-</script>
+        },
+        error: function(error) {
+          console.error(error);
+        }
+      });
+    }
+  } 
+</script> -->

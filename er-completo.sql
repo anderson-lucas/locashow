@@ -267,7 +267,7 @@ VALUES
 ("Home", "home",  "fas fa-home", 1),
 ("Clientes", "clientes",  "fas fa-users", 2),
 ("Imóveis", "imoveis", "fas fa-building", 3),
-("Contratos", "contratos", "fas fa-file-invoice-dollar", 4),
+("Contratos", "contratos", "fas fa-file-contract", 4),
 ("Configurações", "configuracoes", "fas fa-cog", 5);
 ("Teste Api", "teste_api", "fas fa-code", 6);
 

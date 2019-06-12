@@ -13,4 +13,4 @@
  - [x] Criar tela de validação do JSON de consulta, esta tela irá exibir
        em uma tabela os dados retornados usando jQuery para montagem
        desta tabela;
- - [ ] Fazer crud do boleto cliente;
+ - [ ] Criar registros na tabela boleto_cliente ao criar um contrato;
