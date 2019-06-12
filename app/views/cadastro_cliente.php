@@ -1,19 +1,4 @@
-<?php 
-  if (isset($_GET['id']) && isset($_GET['delete'])) {
-    $hash_id = $_GET['id'];
-    $sql = "DELETE FROM cliente WHERE md5(id) = '{$hash_id}'";
-    if ($result = $mysqli->query($sql)) {
-      header('Location: sistema.php?page=clientes');
-      exit;
-    } else {
-      echo "Registro não pode ser excluido, pois tem vínculos ativos no sistema!<br>";
-      echo "<a href='sistema.php?page=clientes'>Clique aqui para voltar!</a>";
-      exit;
-    }
-
-    $mysqli->close();
-  }
-
+<?php
   $cliente = [
     'id' => 0,
     'nome' => '',
@@ -36,11 +21,6 @@
       $result->free();
     }
   }
-
-  $code = 0;
-  if (isset($_GET['code'])) {
-    $code = $_GET['code'];
-  }
 ?>
 
 <div class="text-left">
@@ -52,7 +32,7 @@
 </div>
 
 <style type="text/css">
-  .form-control {
+  .form-control, .alert {
     width: 50%;
   }
 
@@ -61,15 +41,13 @@
   }
 </style>
 
-<form id="form_cliente" class="form-default" method="POST" action="app/controllers/ClienteController.php">
+<form id="form_cliente" class="form-default" method="POST">
 
   <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>">
 
-  <?php if ($code == 2) { ?>
-  <div class="form-group text-center alert alert-error">
+  <div class="form-group text-center alert alert-error" hidden>
     <small>CPF / CNPJ informado já cadastrado!</small>
   </div>
-  <?php } ?>
 
   <div class="form-group">
     <label>Nome</label>
@@ -96,24 +74,4 @@
   </div>
 </form>
 
-<script type="text/javascript">
-  $(function() {
-    $("#btn-submit").click(function(e) {
-      e.preventDefault();
-      var data = {};
-      $("#form_cliente").serializeArray().map(function(x){
-        data[x.name] = x.value;
-      });
-
-      $.ajax({
-        url: API_URL + 'clientes',
-        type: 'post',
-        dataType: 'application/json',
-        data: data
-      });
-
-      alert('Successo!');
-      window.location = 'sistema.php?page=clientes';
-    });
-  });
-</script>
+<script src="js/clientes/cadastroCliente.js"></script>

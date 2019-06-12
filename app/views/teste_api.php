@@ -76,7 +76,6 @@ function cleanTable() {
 
 function populateTable(data) {
   cleanTable();
-  showLoading();
   setTimeout(function() {
     var row = '';
     if (data.length > 0) {
@@ -103,8 +102,6 @@ function populateTable(data) {
     }
 
     $("#tabela_api tbody").append(row);
-
-    hideLoading();
   }, 1000);
 }
 </script>

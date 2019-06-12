@@ -114,20 +114,22 @@ select.form-control {
 }
 
 input.form-control.has-error {
-  border: 1px solid #a00000 !important;
+  border: 2px solid #ff0000cc !important;
 }
 
 .alert {
-  padding: 5px;
+  padding: 10px;
   border: 1px #a5a0a0 solid;
   border-radius: 3px;
   width: -webkit-fill-available;
 }
 
 .alert.alert-error {
-  background-color: #efb9b9;
-  color: #631717;
-  border-color: #631717;
+  background-color: #ff0000bd;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
 }
 
 .alert.alert-success {

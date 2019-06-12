@@ -1,20 +1,4 @@
 <?php 
-  if (isset($_GET['id']) && isset($_GET['delete'])) {
-    $hash_id = $_GET['id'];
-    $sql = "DELETE FROM contrato WHERE md5(id) = '{$hash_id}'";
-
-    if ($result = $mysqli->query($sql)) {
-      header('Location: sistema.php?page=contratos');
-      exit;
-    } else {
-      echo "Registro não pode ser excluido, pois tem vínculos ativos no sistema!<br>";
-      echo "<a href='sistema.php?page=contratos'>Clique aqui para voltar!</a>";
-      exit;
-    }
-
-    $mysqli->close();
-  }
-
   $contrato = [
     'id' => 0,
     'cliente_id' => 0,
@@ -106,7 +90,7 @@
 
   <div class="form-group">
     <label>Tipo</label>
-    <label style="font-weight: normal;"><input type="radio" name="tipo" value="L" <?php echo 'L'==$contrato['tipo'] ? 'checked' : ''; ?> required> Locação </label>
+    <label style="font-weight: normal;"><input type="radio" name="tipo" value="L" <?php echo 'L'==$contrato['tipo'] ? 'checked' : ''; ?> required checked> Locação </label>
     <label style="font-weight: normal;"><input type="radio" name="tipo" value="V" <?php echo 'V'==$contrato['tipo'] ? 'checked' : ''; ?> required> Venda </label>
   </div>
 
@@ -123,7 +107,7 @@
   <div class="form-group">
     <label>Status</label>
 
-    <label style="font-weight: normal;"><input type="radio" name="status" value="A" <?php echo 'A'==$contrato['status'] ? 'checked' : ''; ?> required> Ativo</label>
+    <label style="font-weight: normal;"><input type="radio" name="status" value="A" <?php echo 'A'==$contrato['status'] ? 'checked' : ''; ?> required checked> Ativo</label>
     <label style="font-weight: normal;"><input type="radio" name="status" value="I" <?php echo 'I'==$contrato['status'] ? 'checked' : ''; ?> required> Inativo</label>
 
   </div>

@@ -9,14 +9,13 @@ $(function() {
 
     if (cep.length === 8) {
       getViaCep(cep).then(function(data) {
-        console.log(data);
         if (!data.erro) {
           $("#cep").removeClass("has-error");
-          $("#logradouro").attr('value', data.logradouro);
-          $("#complemento").attr('value', data.complemento);
-          $("#bairro").attr('value', data.bairro);
-          $("#localidade").attr('value', data.localidade);
-          $("#uf").attr('value', data.uf);
+          $("#logradouro").val(data.logradouro);
+          $("#complemento").val(data.complemento);
+          $("#bairro").val(data.bairro);
+          $("#localidade").val(data.localidade);
+          $("#uf").val(data.uf);
         } else {
           $("#cep").addClass("has-error");
           $("#logradouro").val("");
@@ -41,7 +40,6 @@ $(function() {
   //   // $.ajax({
   //   //   url: API_URL + 'clientes',
   //   //   type: 'post',
-  //   //   dataType: 'application/json',
   //   //   data: data
   //   // });
 

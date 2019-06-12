@@ -56,10 +56,6 @@ body {
   opacity: 0.8;
 }
 
-.form-login input.has-error {
-  border: 2px solid #ff0000cc !important;
-}
-
 small {
   font-family: 'Titillium Web', sans-serif;
   color: red;

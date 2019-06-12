@@ -16,16 +16,25 @@ function cleanTable() {
 }
 
 function deleteContrato(id) {
-  if (confirm('Deseja realmente excluir esse contrato?')) {
-    var promise = $.ajax({
-      url: API_URL + 'contratos/' + id,
-      type: 'DELETE'
-    });
-
-    promise.then(function() {
-      loadTable();
-    });
-  }
+  swal({
+    title: "Deseja realmente excluir?",
+    icon: "warning",
+    buttons: ["Cancelar", "Sim"],
+    dangerMode: true,
+  })
+  .then(function(answer) {
+    if (answer) {
+      $.ajax({
+        url: API_URL + 'contratos/' + id,
+        type: 'DELETE'
+      }).done(function() {
+        loadTable();
+        swalSuccess();
+      }).fail(function(error) {
+        swalError(error.responseJSON.data);
+      });
+    }
+  });
 }
 
 //buscando todos os contratos
@@ -61,9 +70,9 @@ function populateTable(data) {
               <a href="sistema.php?page=cadastro_contrato&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
-              <a href="sistema.php?page=cadastro_contrato&id=${md5(data.id)}&delete=1" class="btn btn-danger" title="EXCLUIR">
+              <button class="btn btn-danger" title="EXCLUIR" onClick="deleteContrato(${data.id})">
                 <i class="fas fa-trash-alt"></i>
-              </a>
+              </button>
             </td>
           </tr>
         `;

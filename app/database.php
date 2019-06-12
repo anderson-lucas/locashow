@@ -79,7 +79,7 @@ function delete($table, $where)
     $status = 200;
     $message = [];
     if (! $mysqli->query($sql)) {
-        $message = 'O registro não pode ser deletado!';
+        $message = 'O registro não pode ser deletado pois possui vínculos ativos.';
         $status = 400;
     } else {
         $message = 'Deletado com sucesso!';

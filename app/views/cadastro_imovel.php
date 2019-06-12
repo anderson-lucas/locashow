@@ -42,7 +42,7 @@
   }
 
   $clientes = [];
-  $sql = "SELECT * FROM cliente";
+  $sql = "SELECT *, (SELECT COUNT(1) FROM imovel WHERE cliente.id = imovel.cliente_id) AS qtd FROM cliente";
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
       $clientes[] = $row;
@@ -99,7 +99,7 @@
       <option value="">Selecione um cliente</option>
       <?php foreach ($clientes as $c) { ?>
       <option value="<?php echo $c['id']; ?>" <?php echo $c['id']==$imovel['cliente_id'] ? 'selected' : ''; ?>>
-        <?php echo $c['nome']; ?>
+        <?php echo "{$c['nome']} ({$c['qtd']})"; ?>
       </option>
       <?php } ?>
     </select>
@@ -138,7 +138,7 @@
   <div class="form-group">
     <label class="required">Estado</label>
     <select id="uf" name="uf" class="form-control mT-5" required>
-      <option value="">Selecione um estado</option>
+      <option value="" disabled="true" selected>Selecione um estado</option>
       <?php foreach ($estados as $sigla => $e) { ?>
       <option value="<?php echo $sigla; ?>" <?php echo $sigla==$imovel['uf'] ? 'selected' : ''; ?>>
         <?php echo $e; ?>

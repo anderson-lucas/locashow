@@ -1,12 +1,9 @@
 function search() {
-  var filter = $("#search").val();
-
-  var promise = $.ajax({
+  var filter = $("#search").val().trim();
+  $.ajax({
     url: API_URL + 'clientesSearch/'+filter,
     type: 'GET'
-  });
-
-  promise.then(function(data) {
+  }).done(function(data) {
     populateTable(data.data);
   });
 }
@@ -16,18 +13,25 @@ function cleanTable() {
 }
 
 function deleteCliente(id) {
-  if (confirm('Deseja realmente excluir esse cliente?')) {
-    var promise = $.ajax({
-      url: API_URL + 'clientes/' + id,
-      type: 'DELETE'
-    });
-
-    promise.then(function() {
-      loadTable();
-    }, function(error) {
-      alert(error.responseJSON.data);
-    });
-  }
+  swal({
+    title: "Deseja realmente excluir?",
+    icon: "warning",
+    buttons: ["Cancelar", "Sim"],
+    dangerMode: true,
+  })
+  .then(function(answer) {
+    if (answer) {
+      $.ajax({
+        url: API_URL + 'clientes/' + id,
+        type: 'DELETE'
+      }).done(function() {
+        loadTable();
+        swalSuccess();
+      }).fail(function(error) {
+        swalError(error.responseJSON.data);
+      });
+    }
+  });
 }
 
 //buscando todos os clientes
@@ -55,7 +59,7 @@ function populateTable(data) {
           <tr>
             <td class="text-center">${index + 1}</td>
             <td>${data.nome}</td>
-            <td class="text-center">${data.cpf_cnpj}</td>
+            <td class="text-center cpf_cnpj">${data.cpf_cnpj}</td>
             <td class="text-center">${data.email ? data.email : '-'}</td>
             <td class="text-center">${data.telefone ? data.telefone : '-'}</td>
             <td class="text-center">${data.created}</td>

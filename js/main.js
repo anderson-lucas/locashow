@@ -27,3 +27,31 @@ $(function () {
     if (event.keyCode === 13) search();
   });
 });
+
+var swalSuccess = function() {
+  swal({
+    icon: "success",
+    title: "Sucesso!",
+    timer: 2000,
+  });
+}
+
+var swalError = function(text) {
+  swal({
+    icon: "error",
+    title: "Ops!",
+    text: text
+  });
+}
+
+var getFormData = function(form_id) {
+  var data = {};
+  $(`#${form_id}`).serializeArray().map(function(x){
+    data[x.name] = x.value;
+  });
+  return data;
+}
+
+var getUrlParam = function(param) {
+  return new URL(location.href).searchParams.get(param);
+}
