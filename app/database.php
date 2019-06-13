@@ -6,6 +6,12 @@ const DB_PASS = 'root';
 const DB_NAME = 'db_locashow';
 const DB_PORT = 6603;
 
+// const DB_HOST = 'localhosw';
+// const DB_USER = 'root';
+// const DB_PASS = '';
+// const DB_NAME = 'db_locashow';
+// const DB_PORT = 3306;
+
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
 $mysqli->set_charset("utf8");
 
