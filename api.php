@@ -3,11 +3,10 @@
 header('Content-type: application/json');
 
 require 'app/database.php';
+require 'routes.php';
 
 const ROUTE = 3;
 const PARAMS = 4;
-
-require 'routes.php';
 
 $request = explode('/', $_SERVER['REQUEST_URI'], 5);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
