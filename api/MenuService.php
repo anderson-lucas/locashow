@@ -4,7 +4,7 @@ function getMenus()
 {
     global $mysqli;
 
-    $sql = "SELECT DISTINCT(menu.id), menu.nome, menu.link, menu.icone, menu.ordem
+    $sql = "SELECT DISTINCT(menu.id), menu.nome, menu.link, menu.icone, menu.ordem, menu.created_at
             FROM usuario_grupo
             JOIN grupo ON grupo.id = usuario_grupo.grupo_id
             JOIN grupo_menu ON grupo_menu.grupo_id = grupo.id
