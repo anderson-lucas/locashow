@@ -19,7 +19,7 @@
 </head>
 <body>
   <script src="assets/js/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="assets/js/sweetalert.min.js"></script>
   <script src="assets/js/md5.js"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
   <script src="js/main.js"></script>
