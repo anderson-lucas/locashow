@@ -40,9 +40,9 @@ var swalError = function(text) {
   });
 }
 
-var getFormData = function(form_id) {
+var getFormData = function(form) {
   var data = {};
-  $(`#${form_id}`).serializeArray().map(function(x){
+  $(`${form}`).serializeArray().map(function(x){
     data[x.name] = x.value;
   });
   return data;
@@ -68,7 +68,8 @@ var validateForm = function() {
 var submitForm = function(e) {
   e.preventDefault();
   if (! validateForm()) return;
-  save();
+  var data = getFormData('form');
+  save(data);
 }
 
 var askBeforeDelete = function(id, route) {

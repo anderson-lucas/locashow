@@ -1,5 +1,4 @@
-function save() {
-  var data = getFormData('form_cliente');
+function save(data) {
   data.cpf_cnpj = data.cpf_cnpj.replace(/\D/g,'');
 
   ajax('clientes', data, 'POST').then(function() {
