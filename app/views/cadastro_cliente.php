@@ -41,7 +41,7 @@
   }
 </style>
 
-<form id="form_cliente" class="form-default" method="POST">
+<form id="form_cliente" class="form-default" method="POST" novalidate>
 
   <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>">
 
@@ -70,7 +70,7 @@
   </div>
   
   <div class="form-group left">
-    <button type="submit" id="btn-submit" class="btn btn-save">Salvar</button> 
+    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button> 
   </div>
 </form>
 

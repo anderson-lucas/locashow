@@ -6,8 +6,7 @@
   <a href="sistema.php?page=cadastro_cliente" class="btn btn-save"><i class="fas fa-plus"></i> Adicionar</a>
 
   <div class="search" style="float: right;">
-    <input type="text" id="search" class="form-control" placeholder="Pesquisar">
-    <button class="btn btn-edit" onclick="search()"><i class="fas fa-search"></i></button>
+    <input type="text" id="search" class="form-control" source="clientesSearch" placeholder="Pesquisar">
   </div>
 </div>
 
