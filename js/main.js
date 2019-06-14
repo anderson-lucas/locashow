@@ -105,9 +105,9 @@ var ajax = function(route, data = null, method = 'GET', url_param = null) {
 
 $(function() {
   $("#search").keyup(function() {
-    var filter = $(this).val().trim();
-    var source = $(this).attr('source');
-    ajax(source, null, 'GET', filter).then(function(data) {
+    var search = $(this).val().trim();
+    var route = $(this).attr('source');
+    ajax(route, {search: search}, 'GET').then(function(data) {
       populateTable(data.data);
     });
   });

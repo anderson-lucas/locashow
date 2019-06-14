@@ -1,57 +1,11 @@
-function search() {
-  var filter = $("#search").val();
-  var promise = $.ajax({
-    url: API_URL + 'imoveisSearch/'+filter,
-    type: 'GET'
-  });
-
-  promise.then(function(data) {
-    populateTable(data.data);
-  });
-}
-
-function cleanTable() {
-  $("#tabela_imoveis tbody").empty();
-}
-
-function deleteImovel(id) {
-  swal({
-    title: "Deseja realmente excluir?",
-    icon: "warning",
-    buttons: ["Cancelar", "Sim"],
-    dangerMode: true,
-  })
-  .then(function(answer) {
-    if (answer) {
-      $.ajax({
-        url: API_URL + 'imoveis/' + id,
-        type: 'DELETE'
-      }).done(function() {
-        loadTable();
-        swalSuccess();
-      }).fail(function(error) {
-        swalError(error.responseJSON.data);
-      });
-    }
-  });
-}
-
-function getImoveis() {
-  return $.ajax({
-    url: API_URL + 'imoveis',
-    type: 'GET'
-  });
-}
-
-function loadTable() {
-  getImoveis().then(function(data) {
+function getAll() {
+  ajax('imoveis').then(function(data) {
     populateTable(data.data);
   });
 }
 
 function populateTable(data) {
-  console.log(data);
-  cleanTable();
+  cleanTable('tabela_imoveis');
   showLoading();
   setTimeout(function() {
     var row = '';
@@ -72,7 +26,7 @@ function populateTable(data) {
               <a href="sistema.php?page=cadastro_imovel&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
-              <button class="btn btn-danger" title="EXCLUIR" onClick="deleteImovel(${data.id})">
+              <button class="btn btn-danger" title="EXCLUIR" onclick="askBeforeDelete(${data.id}, 'imoveis')">
                 <i class="fas fa-trash-alt"></i>
               </button> 
             </td>
@@ -83,9 +37,10 @@ function populateTable(data) {
       row = `<tr><td class="text-center" colspan="7">Nenhum registro encontrado</td></tr>`;
     }
     
+    cleanTable('tabela_imoveis');
     $("#tabela_imoveis tbody").append(row);
     hideLoading();
   }, 1000);
 }
 
-loadTable();
+getAll();

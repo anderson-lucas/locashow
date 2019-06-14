@@ -1,15 +1,14 @@
 <?php
 
-function getImovel($id = NULL, $filter = NULL)
+function getImovel(array $data = [])
 {
     $where = '';
-    if ($id) {
-        $where = "WHERE imovel.id = {$id}";
+    if (isset($data['id'])) {
+        $where = "WHERE imovel.id = {$data['id']}";
     }
 
-    if ($filter) {
-        $filter = trim($filter);
-        $where = "WHERE (imovel.descricao LIKE '%{$filter}%' OR cliente.nome LIKE '%{$filter}%')";
+    if (isset($data['search'])) {
+        $where = "WHERE (imovel.descricao LIKE '%{$data['search']}%' OR cliente.nome LIKE '%{$data['search']}%')";
     }
 
     $sql = "SELECT nome AS nome_cliente
@@ -25,20 +24,15 @@ function getImovel($id = NULL, $filter = NULL)
     return ['data' => $imoveis, 'status' => 200]; 
 }
 
-function getImovelSearch($filter = '')
-{
-    return getImovel(NULL, $filter);
-}
-
-function setImovel($data)
+function setImovel(array $data)
 {
     $return = set('imovel', $data);
     return ['data' => $return['message'], 'status' => $return['status']];
 }
 
-function deleteImovel($id)
+function deleteImovel(array $data)
 {
-    $where = "WHERE id = {$id}";
+    $where = "WHERE id = {$data['id']}";
     $return = delete('imovel', $where);
     return ['data' => $return['message'], 'status' => $return['status']];
 }

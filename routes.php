@@ -32,12 +32,6 @@ $routes = [
             'function' => 'deleteCliente',
             'service' => 'api/ClienteService.php',
         ],
-        [
-            'method' => GET,
-            'route' => 'clientesSearch',
-            'function' => 'getClienteSearch',
-            'service' => 'api/ClienteService.php',
-        ]
     ],
     'cliente-endereco' => [
         [
@@ -66,12 +60,6 @@ $routes = [
             'function' => 'deleteImovel',
             'service' => 'api/ImovelService.php',
         ],
-        [
-            'method' => GET,
-            'route' => 'imoveisSearch',
-            'function' => 'getImovelSearch',
-            'service' => 'api/ImovelService.php',
-        ]
     ],
     'imovel-imagens' => [
         [

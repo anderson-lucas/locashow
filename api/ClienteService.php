@@ -1,15 +1,14 @@
 <?php
 
-function getCliente($id = NULL, $filter = NULL)
+function getCliente(array $data = [])
 {
     $where = '';
-    if ($id) {
-        $where = "WHERE id = {$id}";
+    if (isset($data['id'])) {
+        $where = "WHERE id = {$data['id']}";
     }
 
-    if ($filter) {
-        $filter = trim($filter);
-        $where = "WHERE nome LIKE '%{$filter}%'";
+    if (isset($data['search'])) {
+        $where = "WHERE nome LIKE '%{$data['search']}%'";
     }
 
     $sql = "SELECT DATE_FORMAT(cliente.created_at, '%d/%m/%Y %H:%i:%s') AS created
@@ -18,24 +17,18 @@ function getCliente($id = NULL, $filter = NULL)
             {$where}
             ORDER BY nome";
     $clientes = get($sql);
-
     return ['data' => $clientes, 'status' => 200]; 
 }
 
-function getClienteSearch($filter = '')
-{
-    return getCliente(NULL, $filter);
-}
-
-function setCliente($data)
+function setCliente(array $data)
 {
     $return = set('cliente', $data);
     return ['data' => $return['message'], 'status' => $return['status']];
 }
 
-function deleteCliente($id)
+function deleteCliente(array $data)
 {
-    $where = "WHERE id = {$id}";
+    $where = "WHERE id = {$data['id']}";
     $return = delete('cliente', $where);
     return ['data' => $return['message'], 'status' => $return['status']];
 }

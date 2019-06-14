@@ -11,11 +11,31 @@ const PARAMS = 4;
 $request = explode('/', $_SERVER['REQUEST_URI'], 5);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if (isset($request[PARAMS])) {
-	$request[PARAMS] = str_replace('%20', ' ', $request[PARAMS]);
-}
+$params = [];
+if ($requestMethod != 'POST') {
+	if (isset($request[PARAMS])) {
+		$params['id'] = str_replace('%20', ' ', $request[PARAMS]);
+	} else {
+		$queryString = $_SERVER['QUERY_STRING'];
 
-$params = $requestMethod == 'POST' ? $_POST : (isset($request[PARAMS]) ? $request[PARAMS] : NULL);
+		if (count($queryString) > 0) {
+			$parameters[] = $queryString;
+			if (strpos($queryString, '&') !== FALSE) {
+				$parameters = explode('&', $queryString);
+			}
+
+			$params = [];
+			foreach ($parameters as $p) {
+				$arr = explode('=', $p);
+				$params[$arr[0]] = str_replace('%20', ' ', $arr[1]);
+			}
+
+			$request[ROUTE] = explode('?', $request[ROUTE])[0];
+		}
+	}
+} else {
+	$params = $_POST;
+}
 
 $found = FALSE;
 foreach ($routes as $group => $routeList) {
