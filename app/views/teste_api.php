@@ -7,6 +7,7 @@
     height: 350px;
     overflow: auto;
     background-color: #232020;
+    margin-top: 25px;
   }
 
   #json {
@@ -17,12 +18,6 @@
 
   #tabela_api thead tr th {
     text-transform: uppercase;
-  }
-
-  .div-table {
-    width: 100%;
-    overflow: auto;
-    margin-bottom: 25px;
   }
 </style>
 
@@ -36,12 +31,10 @@
   <button class="btn" onclick="getJson('contratos');"><i class="fas fa-play"></i> Contratos</button>
 </div>
 
-<div class="div-table">
-  <table id="tabela_api" class="table table-default">
-    <thead></thead>
-    <tbody></tbody>
-  </table>
-</div>
+<table id="tabela_api" class="table table-default hidden">
+  <thead></thead>
+  <tbody></tbody>
+</table>
 
 <div class="div-json">
   <p id="placeholder" style="color: #fff700;">Resultado em JSON</p>
@@ -50,7 +43,6 @@
 
 <script>
 function getJson(route) {
-
   $("#json").html("");
   $("#placeholder").hide();
   
@@ -79,6 +71,7 @@ function populateTable(data) {
   setTimeout(function() {
     var row = '';
     if (data.length > 0) {
+      $("#tabela_api").removeClass('hidden');
       var keys = Object.keys(data[0]);
       row = '<tr>';
       $.each(keys, function(index, attr) {

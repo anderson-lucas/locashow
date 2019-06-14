@@ -2,6 +2,8 @@ table.table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
+  overflow-x: auto;
+  display: block;
 }
 
 table.table, th, td {
@@ -176,4 +178,8 @@ div.search input {
 label.required::after {
   content: " *";
   color: red;
+}
+
+.hidden {
+  display: none !important;
 }
