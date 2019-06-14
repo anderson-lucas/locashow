@@ -41,7 +41,5 @@
   <script src="assets/js/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/login/login.js"></script>
-<!--   <script src="assets/js/md5.js"></script>
-  <script src="assets/js/jquery.mask.min.js"></script> -->
 </body>
 </html>

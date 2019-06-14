@@ -84,7 +84,7 @@ var askBeforeDelete = function(id, route) {
         url: `${API_URL}${route}/${id}`,
         type: 'DELETE'
       }).done(function() {
-        loadTable();
+        getAll();
         swalSuccess();
       }).fail(function(error) {
         swalError(error.responseJSON.data);
