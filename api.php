@@ -16,7 +16,7 @@ if ($requestMethod != 'POST') {
 	if (isset($request[PARAMS])) {
 		$params['id'] = str_replace('%20', ' ', $request[PARAMS]);
 	} else {
-		$queryString = $_SERVER['QUERY_STRING'];
+		$queryString = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 		
 		if ($queryString) {
 			$parameters[] = $queryString;
