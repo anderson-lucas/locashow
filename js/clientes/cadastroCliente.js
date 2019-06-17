@@ -2,7 +2,7 @@ var id = parseInt(base64dec(getUrlParam('id')));
 
 function getCliente() {
   ajax('clientes', {id: id}).then(function (response) {
-    populateForm(response.data);
+    populateForm(response.data[0]);
   });
 }
 

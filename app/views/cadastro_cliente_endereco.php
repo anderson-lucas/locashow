@@ -19,12 +19,12 @@
 <form id="form_cliente_endereco" class="form-default" method="POST" novalidate>
 
   <div class="form-group">
-    <label>CEP</label>
+    <label class="required">CEP</label>
     <input type="text" class="form-control mT-5" id="cep" name="cep" required>
   </div>
 
   <div class="form-group">
-    <label>Logradouro</label>
+    <label class="required">Logradouro</label>
     <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" required>
   </div>
 
@@ -34,17 +34,17 @@
   </div>
 
   <div class="form-group">
-    <label>Bairro</label>
+    <label class="required">Bairro</label>
     <input type="text" class="form-control mT-5" id="bairro" name="bairro" required>
   </div>
 
   <div class="form-group">
-    <label>Localidade</label>
+    <label class="required">Localidade</label>
     <input type="text" class="form-control mT-5" id="localidade" name="localidade" required>
   </div>
 
   <div class="form-group">
-    <label>Estado</label>
+    <label class="required">Estado</label>
     <select id="uf" name="uf" class="form-control mT-5" required>
       <option value="" selected>Selecione</option>
       <option value="AC">Acre</option>

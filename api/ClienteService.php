@@ -17,7 +17,7 @@ function getCliente(array $data = [])
             {$where}
             ORDER BY cliente.created_at DESC, cliente.nome";
     $clientes = get($sql);
-    return ['data' => count($clientes)==1?$clientes[0]:$clientes, 'status' => 200];
+    return ['data' => $clientes, 'status' => 200];
 }
 
 function setCliente(array $data)

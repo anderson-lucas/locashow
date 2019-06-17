@@ -1,24 +1,56 @@
-$(function() {
-  //set masks
+var id = parseInt(base64dec(getUrlParam('id')));
+var clientes = [];
+
+function getClientes() {
+  ajax('clientes').then(function (response) {
+    clientes = response.data;
+    populateComboClientes(clientes);
+  });
+}
+
+function getImovel() {
+  ajax('imoveis', {id: id}).then(function (response) {
+    console.log(response.data);
+    setTimeout(function() {
+      populateForm(response.data[0]);
+    }, 100);
+  });
+}
+
+function save(data) {
+  if (id) data.id = id;
+  ajax('imoveis', data, 'POST').then(function() {
+    swalSuccess();
+  });
+}
+
+function setMasks() {
   $("#cep").mask("99999-999");
+}
 
-  // $("#btn-submit").click(function(e) {
-  //   e.preventDefault();
-  //   var data = {};
-  //   $("#form_imovel").serializeArray().map(function(x){
-  //     data[x.name] = x.value;
-  //   });
+function populateForm(data) {
+  $("#cliente_id").val(data.cliente_id);
+  $("#descricao").val(data.descricao);
+  $("#cep").val(data.cep);
+  $("#logradouro").val(data.logradouro);
+  $("#complemento").val(data.complemento);
+  $("#bairro").val(data.bairro);
+  $("#localidade").val(data.localidade);
+  $("#uf").val(data.uf);
+}
 
-  //   console.log(data);
+function populateComboClientes(clientes) {
+  var row = '';
+  clientes.map(function(cliente, index) {
+    row += `<option value="${cliente.id}">${cliente.nome}</option>`;
+  });
+  $("#cliente_id").append(row);
+}
 
-  //   // $.ajax({
-  //   //   url: API_URL + 'clientes',
-  //   //   type: 'post',
-  //   //   data: data
-  //   // });
+if (id) {
+  getImovel();
+} else {
+  setMasks();
+}
 
-  //   //window.location = 'sistema.php?page=clientes';
-  // });
-
-  // console.log('opa');
-});
+getClientes();

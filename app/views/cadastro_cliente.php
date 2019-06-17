@@ -23,12 +23,12 @@
   </div>
 
   <div class="form-group">
-    <label>Nome</label>
+    <label class="required">Nome</label>
     <input type="text" class="form-control mT-5" id="nome" name="nome" required>
   </div>
 
   <div class="form-group">
-    <label>CPF / CNPJ</label>
+    <label class="required">CPF / CNPJ</label>
     <input type="text" class="form-control mT-5" id="cpf_cnpj" name="cpf_cnpj" required>
   </div>
 
@@ -43,7 +43,7 @@
   </div>
   
   <div class="form-group left">
-    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button> 
+    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button>
   </div>
 </form>
 

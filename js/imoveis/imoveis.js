@@ -20,10 +20,10 @@ function populateTable(data) {
             <td class="text-center">${data.logradouro}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
-              <a href="sistema.php?page=cadastro_imovel_imagem&id=${md5(data.id)}" class="btn btn-save" title="FOTOS">
+              <a href="sistema.php?page=cadastro_imovel_imagem&id=${base64enc(data.id)}" class="btn btn-save" title="FOTOS">
                 <i class="fas fa-image"></i>
               </a>
-              <a href="sistema.php?page=cadastro_imovel&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
+              <a href="sistema.php?page=cadastro_imovel&id=${base64enc(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
               <button class="btn btn-danger" title="EXCLUIR" onclick="askBeforeDelete(${data.id}, 'imoveis')">
