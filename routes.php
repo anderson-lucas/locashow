@@ -35,6 +35,18 @@ $routes = [
     ],
     'cliente-endereco' => [
         [
+            'method' => GET,
+            'route' => 'cliente-endereco',
+            'function' => 'getClienteEndereco',
+            'service' => 'api/ClienteEnderecoService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'cliente-endereco',
+            'function' => 'setClienteEndereco',
+            'service' => 'api/ClienteEnderecoService.php',
+        ],
+        [
             'method' => DELETE,
             'route' => 'cliente-endereco',
             'function' => 'deleteEndereco',

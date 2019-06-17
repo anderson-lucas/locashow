@@ -20,7 +20,7 @@ function populateTable(data) {
             <td class="text-center">${data.telefone ? data.telefone : '-'}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
-              <a href="sistema.php?page=cadastro_cliente_endereco&id=${md5(data.id)}" class="btn btn-save" title="ENDEREÇOS">
+              <a href="sistema.php?page=cadastro_cliente_endereco&cliente_id=${base64enc(data.id)}" class="btn btn-save" title="ENDEREÇOS">
                 <i class="fas fa-list"></i>
               </a>
               <a href="sistema.php?page=cadastro_cliente&id=${base64enc(data.id)}" class="btn btn-edit" title="EDITAR">

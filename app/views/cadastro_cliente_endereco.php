@@ -1,71 +1,5 @@
-<?php 
-  $endereco = [
-    'id' => 0,
-    'cliente_id' => $_GET['id'],
-    'cep' => '',
-    'logradouro' => '',
-    'complemento' => '',
-    'bairro' => '',
-    'localidade' => ''
-  ]; 
-
-  if (isset($_GET['id'])) {
-    $hash_id = $_GET['id'];
-    $sql = "SELECT * FROM cliente WHERE md5(id) = '{$hash_id}'";
-    if ($result = $mysqli->query($sql)) {
-      if ($result->num_rows == 0) {
-        header('Location: sistema.php?page=clientes');
-        exit;
-      }
-      while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $cliente = $row;
-      }
-      $result->free();
-    }
-  }
-
-  $enderecos = [];
-  $sql = "SELECT * FROM cliente_endereco WHERE md5(cliente_id) = '{$hash_id}'";
-  if ($result = $mysqli->query($sql)) {
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $enderecos[] = $row;
-    }
-    $result->free();
-  }
-
-  $estados = [
-    'AC'=>'Acre',
-    'AL'=>'Alagoas',
-    'AP'=>'Amapá',
-    'AM'=>'Amazonas',
-    'BA'=>'Bahia',
-    'CE'=>'Ceará',
-    'DF'=>'Distrito Federal',
-    'ES'=>'Espírito Santo',
-    'GO'=>'Goiás',
-    'MA'=>'Maranhão',
-    'MT'=>'Mato Grosso',
-    'MS'=>'Mato Grosso do Sul',
-    'MG'=>'Minas Gerais',
-    'PA'=>'Pará',
-    'PB'=>'Paraíba',
-    'PR'=>'Paraná',
-    'PE'=>'Pernambuco',
-    'PI'=>'Piauí',
-    'RJ'=>'Rio de Janeiro',
-    'RN'=>'Rio Grande do Norte',
-    'RS'=>'Rio Grande do Sul',
-    'RO'=>'Rondônia',
-    'RR'=>'Roraima',
-    'SC'=>'Santa Catarina',
-    'SP'=>'São Paulo',
-    'SE'=>'Sergipe',
-    'TO'=>'Tocantins'
-  ];
-?>
-
 <div class="text-left">
-  <h2>Cadastro de Endereços - <?php echo $cliente['nome']; ?></h2>
+  <h2>Cadastro de Endereços - <span id="nomeCliente"></span></h2>
 </div>
 
 <div style="margin-bottom: 20px;">
@@ -82,55 +16,74 @@
   }
 </style>
 
-<form class="form-default" method="POST" action="app/controllers/ClienteEnderecoController.php">
-
-  <input type="hidden" name="id" value="<?php echo $endereco['id']; ?>">
-  <input type="hidden" name="cliente_id" value="<?php echo $cliente['id']; ?>">
+<form id="form_cliente_endereco" class="form-default" method="POST" novalidate>
 
   <div class="form-group">
     <label>CEP</label>
-    <input type="text" class="form-control mT-5" id="cep" name="cep" value="<?php echo $endereco['cep']; ?>" required>
+    <input type="text" class="form-control mT-5" id="cep" name="cep" required>
   </div>
 
   <div class="form-group">
     <label>Logradouro</label>
-    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" value="<?php echo $endereco['logradouro']; ?>" required>
+    <input type="text" class="form-control mT-5" id="logradouro" name="logradouro" required>
   </div>
 
   <div class="form-group">
     <label>Complemento</label>
-    <input type="text" class="form-control mT-5" id="complemento" name="complemento" value="<?php echo $endereco['complemento']; ?>" required>
+    <input type="text" class="form-control mT-5" id="complemento" name="complemento">
   </div>
 
   <div class="form-group">
     <label>Bairro</label>
-    <input type="text" class="form-control mT-5" id="bairro" name="bairro" value="<?php echo $endereco['bairro']; ?>" required>
+    <input type="text" class="form-control mT-5" id="bairro" name="bairro" required>
   </div>
 
   <div class="form-group">
     <label>Localidade</label>
-    <input type="text" class="form-control mT-5" id="localidade" name="localidade" value="<?php echo $endereco['localidade']; ?>" required>
+    <input type="text" class="form-control mT-5" id="localidade" name="localidade" required>
   </div>
 
   <div class="form-group">
     <label>Estado</label>
-    <select id="uf" name="uf" class="form-control mT-5">
-      <?php foreach ($estados as $sigla => $e) { ?>
-      <option value="<?php echo $sigla; ?>" <?php echo $sigla==$imovel['uf'] ? 'selected' : ''; ?>>
-        <?php echo $e; ?>
-      </option>
-      <?php } ?>
+    <select id="uf" name="uf" class="form-control mT-5" required>
+      <option value="" selected>Selecione</option>
+      <option value="AC">Acre</option>
+      <option value="AL">Alagoas</option>
+      <option value="AP">Amapá</option>
+      <option value="AM">Amazonas</option>
+      <option value="BA">Bahia</option>
+      <option value="CE">Ceará</option>
+      <option value="DF">Distrito Federal</option>
+      <option value="ES">Espírito Santo</option>
+      <option value="GO">Goiás</option>
+      <option value="MA">Maranhão</option>
+      <option value="MT">Mato Grosso</option>
+      <option value="MS">Mato Grosso do Sul</option>
+      <option value="MG">Minas Gerais</option>
+      <option value="PA">Pará</option>
+      <option value="PB">Paraíba</option>
+      <option value="PR">Paraná</option>
+      <option value="PE">Pernambuco</option>
+      <option value="PI">Piauí</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="RN">Rio Grande do Norte</option>
+      <option value="RS">Rio Grande do Sul</option>
+      <option value="RO">Rondônia</option>
+      <option value="RR">Roraima</option>
+      <option value="SC">Santa Catarina</option>
+      <option value="SP">São Paulo</option>
+      <option value="SE">Sergipe</option>
+      <option value="TO">Tocantins</option>
     </select>
   </div>
 
-
   <div class="form-group left">
-    <button type="submit" class="btn btn-save">Salvar</button> 
+    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button> 
   </div> 
 </form>
 
 
-<table class="table table-default">
+<table class="table table-default" id="tabela_enderecos">
   <thead>
     <tr>
       <th width="5%">#</th>
@@ -144,48 +97,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php if (count($enderecos) == 0) { ?>
-      <tr><td class="text-center" colspan="8" style="padding: 20px">Nenhum registro encontrado</td></tr>
-    <?php } ?>
-    <?php foreach ($enderecos as $key => $c) { ?>
-      <tr>
-        <td class="text-center"><?php echo $key+1; ?></td>
-        <td class="text-center"><?php echo $c['cep']; ?></td>
-        <td class="text-center"><?php echo empty($c['logradouro']) ? '-' : $c['logradouro']; ?></td>
-        <td class="text-center"><?php echo empty($c['complemento']) ? '-' : $c['complemento']; ?></td>
-        <td class="text-center"><?php echo empty($c['bairro']) ? '-' : $c['bairro']; ?></td>
-        <td class="text-center"><?php echo empty($c['localidade']) ? '-' : $c['localidade']; ?></td>
-        <td class="text-center"><?php echo empty($c['uf']) ? '-' : $c['uf']; ?></td>
-        <td class="text-center">
-          <button class="btn btn-danger" title="EXCLUIR" onclick="deleteEndereco(<?php echo $c['id']; ?>)">
-            <i class="fas fa-trash-alt"></i>
-          </button> 
-        </td>
-      </tr>
-    <?php } ?>
   </tbody>
 </table>
 
-
-<script type="text/javascript">
-  function deleteEndereco(id) {
-    swal({
-      title: "Deseja realmente excluir?",
-      icon: "warning",
-      buttons: ["Cancelar", "Sim"],
-      dangerMode: true,
-    })
-    .then(function(answer) {
-      if (answer) {
-        $.ajax({
-          url: API_URL + 'cliente-endereco/' + id,
-          type: 'DELETE'
-        }).done(function() {
-          window.location.reload();
-        }).fail(function(error) {
-          swalError(error.responseJSON.data);
-        });
-      }
-    });
-  }
-</script>
+<script src="js/clientes/cadastroClienteEndereco.js"></script>

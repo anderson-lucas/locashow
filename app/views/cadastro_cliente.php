@@ -1,13 +1,3 @@
-<?php
-  $cliente = [
-    'id' => 0,
-    'nome' => '',
-    'cpf_cnpj' => '',
-    'email' => '',
-    'telefone' => '',
-  ]; 
-?>
-
 <div class="text-left">
   <h2>Cadastro de Cliente</h2>
 </div>

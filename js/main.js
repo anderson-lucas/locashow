@@ -119,4 +119,27 @@ $(function() {
       populateTable(data.data);
     });
   });
+
+  $("#cep").on('keyup', function () {
+    cep = this.value.replace("-", "").trim();
+    if (cep.length === 8) {
+      getViaCep(cep).then(function (data) {
+        if (!data.erro) {
+          $("#cep").removeClass("has-error");
+          $("#logradouro").val(data.logradouro);
+          $("#complemento").val(data.complemento);
+          $("#bairro").val(data.bairro);
+          $("#localidade").val(data.localidade);
+          $("#uf").val(data.uf);
+        } else {
+          $("#cep").addClass("has-error");
+          $("#logradouro").val("");
+          $("#complemento").val("");
+          $("#bairro").val("");
+          $("#localidade").val("");
+          $("#uf").val("");
+        }
+      });
+    }
+  });
 });

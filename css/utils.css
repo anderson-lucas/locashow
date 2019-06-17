@@ -115,7 +115,7 @@ select.form-control {
   padding: 10px 13px !important;
 }
 
-input.form-control.has-error {
+.form-control.has-error {
   border: 2px solid #ff0000cc !important;
 }
 
