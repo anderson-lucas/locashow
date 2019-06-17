@@ -17,8 +17,8 @@ if ($requestMethod != 'POST') {
 		$params['id'] = str_replace('%20', ' ', $request[PARAMS]);
 	} else {
 		$queryString = $_SERVER['QUERY_STRING'];
-
-		if (count($queryString) > 0) {
+		
+		if ($queryString) {
 			$parameters[] = $queryString;
 			if (strpos($queryString, '&') !== FALSE) {
 				$parameters = explode('&', $queryString);

@@ -23,7 +23,7 @@ function populateTable(data) {
               <a href="sistema.php?page=cadastro_cliente_endereco&id=${md5(data.id)}" class="btn btn-save" title="ENDEREÇOS">
                 <i class="fas fa-list"></i>
               </a>
-              <a href="sistema.php?page=cadastro_cliente&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
+              <a href="sistema.php?page=cadastro_cliente&id=${base64enc(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
               <button class="btn btn-danger" title="EXCLUIR" onclick="askBeforeDelete(${data.id}, 'clientes')">

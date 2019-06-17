@@ -1,3 +1,12 @@
+var id = parseInt(base64dec(getUrlParam('id')));
+
+function getCliente() {
+  ajax('clientes', {id: id}).then(function (response) {
+    console.log(response.data);
+    //populateForm(data.data);
+  });
+}
+
 function save(data) {
   data.cpf_cnpj = data.cpf_cnpj.replace(/\D/g,'');
 
@@ -23,3 +32,7 @@ function setMasks() {
 }
 
 setMasks();
+
+if (id) {
+  getCliente();
+}

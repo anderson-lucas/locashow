@@ -1,5 +1,13 @@
 const API_URL = '/locashow/api.php/';
 
+var base64enc = function(value) {
+  return btoa(value);
+}
+
+var base64dec = function (value) {
+  return atob(value);
+}
+
 var showLoading = function() {
   var row = `<tr id="loading"><td class="text-center" colspan="100"><img width="10%" src="/locashow/assets/loading.gif"></td></tr>`;
   $("table tbody").empty().append(row);
