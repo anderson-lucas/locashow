@@ -41,7 +41,7 @@ function populateTable(data) {
         `;
       });
     } else {
-      row = `<tr><td class="text-center" colspan="7">Nenhum registro encontrado</td></tr>`;
+      row = `<tr><td class="text-center" colspan="8">Nenhum registro encontrado</td></tr>`;
     }
 
     cleanTable('tabela_enderecos');
