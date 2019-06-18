@@ -16,4 +16,4 @@
  
  
  ## TO DO:
- - [ ] Refatorar cadastros de permissões para usar ajax
+ - [ ] Refatorar cadastros de permissões para usar ajax (menu configurações)
