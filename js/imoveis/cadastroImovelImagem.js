@@ -40,10 +40,16 @@ function save(data) {
     contentType: false,
     processData: false
   }).then(function() {
+    $("#form_imovel_imagem")[0].reset();
+    $("#img-preview").hide().removeAttr('src');
     swalSuccess();
     getAll();
   });
 }
+
+$("#foto").change(function() {
+  $("#img-preview").show().attr('src', window.URL.createObjectURL(this.files[0]));
+});
 
 if (imovel_id) {
   getAll();

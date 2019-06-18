@@ -36,7 +36,7 @@ function setImovelImagem(array $data)
 
     $full_path_insert = 'imoveis/'.$data['imovel_id'].'/'.$image_name;
 
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $image_with_path)) {
+    if (move_uploaded_file($data['files']['foto']['tmp_name'], $image_with_path)) {
         $insert = ['imovel_id' => $data['imovel_id'], 'full_path' => $full_path_insert];
         $return = set('imovel_imagem', $insert);
         return ['data' => $return['message'], 'status' => $return['status']];

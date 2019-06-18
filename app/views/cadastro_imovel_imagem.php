@@ -7,6 +7,9 @@
 </div>
 
 <form id="form_imovel_imagem" class="form-default" enctype="multipart/form-data" method="POST" novalidate>
+
+  <img src="" id="img-preview" hidden>
+
   <div class="form-group">
     <label>Inserir nova foto</label>
     <input type="file" accept="image/jpeg" class="form-control mT-5" id="foto" name="foto" required>
@@ -36,6 +39,13 @@
     border: 1px solid #c3c3c3;
     border-radius: 5px;
     width: fit-content;
+  }
+
+  #img-preview {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #656565;
+    margin: 5px;
   }
 
   .div-image img {
