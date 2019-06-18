@@ -1,48 +1,25 @@
-<?php 
-  $imovel = [
-    'id' => 0,
-    'cliente_id' => 0,
-    'descricao' => '',
-    'cep' => '',
-    'logradouro' => '',
-    'complemento' => '',
-    'bairro' => '',
-    'localidade' => '',
-    'uf' => '',
-  ]; 
-
-  if (isset($_GET['id'])) {
-    $hash_id = $_GET['id'];
-    $sql = "SELECT upper(left(sha1(id), 8)) as codigo, imovel.* FROM imovel WHERE md5(id) = '{$hash_id}'";
-    if ($result = $mysqli->query($sql)) {
-      if ($result->num_rows == 0) {
-        header('Location: sistema.php?page=imoveis');
-        exit;
-      }
-      while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        $imovel = $row;
-      }
-      $result->free();
-    }
-  }
-
-  $imagens = [];
-  $sql = "SELECT * FROM imovel_imagem WHERE md5(imovel_id) = '{$hash_id}'";
-  if ($result = $mysqli->query($sql)) {
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      $imagens[] = $row;
-    }
-    $result->free();
-  }
-?>
-
 <div class="text-left">
-  <h2>Cadastro de Fotos do Imóvel - <?php echo "({$imovel['codigo']}) {$imovel['descricao']}";?></h2>
+  <h2>Cadastro de Fotos do Imóvel - <span id="nomeImovel"></span></h2>
 </div>
 
 <div style="margin-bottom: 20px;">
   <a href="sistema.php?page=imoveis" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
 </div>
+
+<form id="form_imovel_imagem" class="form-default" enctype="multipart/form-data" method="POST" novalidate>
+  <div class="form-group">
+    <label>Inserir nova foto</label>
+    <input type="file" accept="image/jpeg" class="form-control mT-5" id="foto" name="foto" required>
+  </div>
+
+  <div class="form-group">
+    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button> 
+  </div>
+</form>
+
+<div id="fotos" hidden></div>
+
+<script src="js/imoveis/cadastroImovelImagem.js"></script>
 
 <style type="text/css">
   .form-control {
@@ -53,7 +30,7 @@
     width: 50%;
   }
 
-  .fotos {
+  #fotos {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #c3c3c3;
@@ -80,53 +57,3 @@
     border-radius: 0px;
   }
 </style>
-
-<form class="form-default" enctype="multipart/form-data" method="POST" action="app/controllers/ImovelImagemController.php">
-  <input type="hidden" name="imovel_id" value="<?php echo $imovel['id']; ?>">
-  
-  <div class="form-group">
-    <label>Inserir nova foto</label>
-    <input type="file" accept="image/jpeg" class="form-control mT-5" id="foto" name="foto" required>
-  </div>
-
-  <div class="form-group left">
-    <button type="submit" class="btn btn-save">Salvar</button> 
-  </div>
-</form>
-
-<?php if (count($imagens) > 0) { ?>
-<div class="fotos">
-<?php foreach ($imagens as $key => $foto) { ?>
-  <div class="div-image">
-    <img src="/locashow/<?php echo $foto['full_path']; ?>">
-    <button onclick="deleteFoto(<?php echo $foto['id']; ?>)" class="remove-image btn btn-danger"><i class="fa fa-trash-alt"></i></button>
-  </div>
-<?php } ?>
-</div>
-<?php } else { ?>
-Nenhuma foto cadastrada para esse imóvel.
-<br><br>
-<?php } ?>
-
-<script type="text/javascript">
-  function deleteFoto(id) {
-    swal({
-      title: "Deseja realmente excluir?",
-      icon: "warning",
-      buttons: ["Cancelar", "Sim"],
-      dangerMode: true,
-    })
-    .then(function(answer) {
-      if (answer) {
-        $.ajax({
-          url: API_URL + 'imovel-imagens/' + id,
-          type: 'DELETE'
-        }).done(function() {
-          window.location.reload();
-        }).fail(function(error) {
-          swalError(error.responseJSON.data);
-        });
-      }
-    });
-  }
-</script>

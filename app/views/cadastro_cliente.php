@@ -42,7 +42,7 @@
     <input type="text" class="form-control mT-5" id="telefone" name="telefone">
   </div>
   
-  <div class="form-group left">
+  <div class="form-group">
     <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button>
   </div>
 </form>

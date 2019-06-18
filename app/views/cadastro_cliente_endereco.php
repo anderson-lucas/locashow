@@ -77,8 +77,8 @@
     </select>
   </div>
 
-  <div class="form-group left">
-    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button> 
+  <div class="form-group">
+    <button type="button" onclick="submitForm(event)" class="btn btn-save">Salvar</button>
   </div> 
 </form>
 

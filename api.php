@@ -35,6 +35,9 @@ if ($requestMethod != 'POST') {
 	}
 } else {
 	$params = $_POST;
+	if (count($_FILES) > 0) {
+		$params['files'] = $_FILES;
+	}
 }
 
 $found = FALSE;

@@ -73,10 +73,22 @@ $routes = [
             'service' => 'api/ImovelService.php',
         ],
     ],
-    'imovel-imagens' => [
+    'imovel-imagem' => [
+        [
+            'method' => GET,
+            'route' => 'imovel-imagem',
+            'function' => 'getImovelImagem',
+            'service' => 'api/ImovelImagemService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'imovel-imagem',
+            'function' => 'setImovelImagem',
+            'service' => 'api/ImovelImagemService.php',
+        ],
         [
             'method' => DELETE,
-            'route' => 'imovel-imagens',
+            'route' => 'imovel-imagem',
             'function' => 'deleteImovelImagem',
             'service' => 'api/ImovelImagemService.php',
         ]
