@@ -31,7 +31,7 @@ $routes = [
             'route' => 'clientes',
             'function' => 'deleteCliente',
             'service' => 'api/ClienteService.php',
-        ],
+        ]
     ],
     'cliente-endereco' => [
         [
@@ -51,7 +51,7 @@ $routes = [
             'route' => 'cliente-endereco',
             'function' => 'deleteEndereco',
             'service' => 'api/ClienteEnderecoService.php',
-        ],
+        ]
     ],
     'imoveis' => [
         [
@@ -71,7 +71,7 @@ $routes = [
             'route' => 'imoveis',
             'function' => 'deleteImovel',
             'service' => 'api/ImovelService.php',
-        ],
+        ]
     ],
     'imovel-imagem' => [
         [
@@ -111,12 +111,6 @@ $routes = [
             'route' => 'contratos',
             'function' => 'deleteContrato',
             'service' => 'api/ContratoService.php',
-        ],
-        [
-            'method' => GET,
-            'route' => 'contratosSearch',
-            'function' => 'getContratoSearch',
-            'service' => 'api/ContratoService.php',
         ]
     ],
     'grupo-menu' => [
@@ -146,5 +140,19 @@ $routes = [
             'function' => 'deleteUsuarioGrupo',
             'service' => 'api/UsuarioGrupoService.php',
         ]
-    ]
+    ],
+    'boletos' => [
+        [
+            'method' => GET,
+            'route' => 'boletos',
+            'function' => 'getBoleto',
+            'service' => 'api/BoletoService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'boletos',
+            'function' => 'deleteBoleto',
+            'service' => 'api/BoletoService.php',
+        ]
+    ],
 ];

@@ -22,6 +22,7 @@
   <script src="assets/js/sweetalert.min.js"></script>
   <script src="assets/js/md5.js"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
+  <script src="assets/js/moment-with-locales.js"></script>
   <script src="js/main.js"></script>
 
   <div class="header bg-interface">

@@ -1,58 +1,11 @@
-function search() {
-  var filter = $("#search").val();
-
-  var promise = $.ajax({
-    url: API_URL + 'contratosSearch/'+filter,
-    type: 'GET'
-  });
-
-  promise.then(function(data) {
-    populateTable(data.data);
-  });
-}
-
-function cleanTable() {
-  $("#tabela_contratos tbody").empty();
-}
-
-function deleteContrato(id) {
-  swal({
-    title: "Deseja realmente excluir?",
-    icon: "warning",
-    buttons: ["Cancelar", "Sim"],
-    dangerMode: true,
-  })
-  .then(function(answer) {
-    if (answer) {
-      $.ajax({
-        url: API_URL + 'contratos/' + id,
-        type: 'DELETE'
-      }).done(function() {
-        loadTable();
-        swalSuccess();
-      }).fail(function(error) {
-        swalError(error.responseJSON.data);
-      });
-    }
-  });
-}
-
-//buscando todos os contratos
-function getContratos() {
-  return $.ajax({
-    url: API_URL + 'contratos',
-    type: 'GET'
-  });
-}
-
-function loadTable() {
-  getContratos().then(function(data) {
+function getAll() {
+  ajax('contratos').then(function(data) {
     populateTable(data.data);
   });
 }
 
 function populateTable(data) {
-  cleanTable();
+  cleanTable('tabela_contratos');
   showLoading();
   setTimeout(function() {
     var row = '';
@@ -63,19 +16,16 @@ function populateTable(data) {
             <td class="text-center">${index + 1}</td>
             <td>${data.nome_cliente}</td>
             <td class="text-center">${data.descricao}</td>
-            <td class="text-center">${data.tipo}</td>
+            <td class="text-center">${data.desc_tipo}</td>
             <td class="text-right">R$ ${data.valor}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
-              <a href="sistema.php?page=cadastro_contrato_boleto&id=${md5(data.id)}" class="btn btn-save" title="BOLETOS">
+              <a href="sistema.php?page=boletos_clientes&contrato_id=${base64enc(data.id)}" class="btn btn-save" title="BOLETOS">
                 <i class="fas fa-dollar-sign"></i>
               </a>
-              <a href="sistema.php?page=cadastro_contrato&id=${md5(data.id)}" class="btn btn-edit" title="EDITAR">
-                <i class="fas fa-pencil-alt"></i>
+              <a href="sistema.php?page=cadastro_contrato&id=${base64enc(data.id)}" class="btn btn-warning" title="VISUALIZAR">
+                <i class="fas fa-eye"></i>
               </a>
-              <button class="btn btn-danger" title="EXCLUIR" onClick="deleteContrato(${data.id})">
-                <i class="fas fa-trash-alt"></i>
-              </button>
             </td>
           </tr>
         `;
@@ -84,9 +34,10 @@ function populateTable(data) {
       row = `<tr><td class="text-center" colspan="7">Nenhum registro encontrado</td></tr>`;
     }
     
+    cleanTable('tabela_contratos');
     $("#tabela_contratos tbody").append(row);
     hideLoading();
   }, 1000);
 }
 
-loadTable();
+getAll();

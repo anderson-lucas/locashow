@@ -1,4 +1,5 @@
 const API_URL = '/locashow/api.php/';
+moment.locale('pt-br');
 
 var base64enc = function(value) {
   return btoa(value);

@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `db_locashow`.`log_acesso` (
 -- Table `db_locashow`.`boleto_cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_locashow`.`boleto_cliente` (
-  `id` INT ZEROFILL NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `contrato_id` INT NOT NULL,
   `cliente_id` INT NOT NULL,
   `valor` DECIMAL(19,2) NOT NULL,

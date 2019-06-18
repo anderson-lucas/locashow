@@ -91,6 +91,16 @@ table.table td {
   background-color: #ffd400;
 }
 
+.btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.btn:disabled:hover {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .form-group {
   margin-bottom: 20px !important;
   width: 100%;
