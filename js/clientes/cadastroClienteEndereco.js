@@ -4,7 +4,7 @@ var editing = false;
 
 function getAll() {
   ajax('clientes', { id: cliente_id }).then(function (response) {
-    cliente = response.data;
+    cliente = response.data[0];
     $("#nomeCliente").html(cliente.nome);
   });
 

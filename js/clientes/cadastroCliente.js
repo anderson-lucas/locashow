@@ -8,6 +8,9 @@ function getCliente() {
 
 function save(data) {
   data.cpf_cnpj = data.cpf_cnpj.replace(/\D/g,'');
+
+  if (!validarCpfCnpj()) return false;
+
   if (id) data.id = id;
   ajax('clientes', data, 'POST').then(function() {
     swalSuccess();
@@ -37,6 +40,20 @@ function populateForm(data) {
   $("#telefone").val(data.telefone);
   setMasks();
 }
+
+function validarCpfCnpj() {
+  if (!validaCpfCnpj($("#cpf_cnpj").cleanVal())) {
+    $("#cpf_cnpj").addClass("has-error");
+    return false;
+  } else {
+    $("#cpf_cnpj").removeClass("has-error");
+    return true;
+  }
+}
+
+$("#cpf_cnpj").blur(function() {
+  validarCpfCnpj();
+});
 
 if (id) {
   getCliente();

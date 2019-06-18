@@ -27,7 +27,7 @@ function createGrupoMenu($data)
 
 function deleteGrupoMenu($parameters)
 {
-    $params = explode('/', $parameters);
+    $params = explode('/', $parameters['id']);
     $grupo_id = $params[0];
     $menu_id = $params[1];
 

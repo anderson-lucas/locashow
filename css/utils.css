@@ -3,7 +3,7 @@ table.table {
   width: 100%;
   font-size: 14px;
   overflow-x: auto;
-  display: inline-table;
+  display: block;
 }
 
 table.table, th, td {

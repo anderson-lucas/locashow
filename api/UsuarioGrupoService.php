@@ -27,7 +27,7 @@ function createUsuarioGrupo($data)
 
 function deleteUsuarioGrupo($parameters)
 {
-    $params = explode('/', $parameters);
+    $params = explode('/', $parameters['id']);
     $usuario_id = $params[0];
     $grupo_id = $params[1];
 

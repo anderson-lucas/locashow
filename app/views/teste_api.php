@@ -66,6 +66,14 @@ function cleanTable() {
   $("#tabela_api thead").empty();
 }
 
+function cleanHead() {
+  $("#tabela_api thead").empty();
+}
+
+function cleanBody() {
+  $("#tabela_api tbody").empty();
+}
+
 function populateTable(data) {
   cleanTable();
   setTimeout(function() {
@@ -79,6 +87,7 @@ function populateTable(data) {
       });
       row += '</tr>';
 
+      cleanHead()
       $("#tabela_api thead").append(row);
 
       row = '';
@@ -90,10 +99,9 @@ function populateTable(data) {
         });
         row += '</tr>';
       });
-    } else {
-      row = `<tr><td class="text-center" colspan="7">Nenhum registro encontrado.</td></tr>`;
     }
 
+    cleanBody();
     $("#tabela_api tbody").append(row);
   }, 1000);
 }
