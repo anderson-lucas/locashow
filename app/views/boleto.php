@@ -168,7 +168,7 @@
     </tr>
     <tr>
         <td colspan=10 class=BoletoValorEsquerdo style="text-align: left; padding-left : 0.1cm">PAGAR PREFERENCIALMENTE NO BANCO CAIXA</td>
-        <td class=BoletoValorDireito>Vencimento</td>
+        <td class=BoletoValorDireito><?php echo date('d/m/Y', strtotime($boleto['dt_vencimento'])); ?></td>
     </tr>  
     <tr>
         <td colspan=10 class=BoletoTituloEsquerdo>Cedente</td>
