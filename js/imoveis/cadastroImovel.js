@@ -10,7 +10,6 @@ function getClientes() {
 
 function getImovel() {
   ajax('imoveis', {id: id}).then(function (response) {
-    console.log(response.data);
     setTimeout(function() {
       populateForm(response.data[0]);
     }, 100);
