@@ -16,8 +16,6 @@ function populateTable(data) {
             <td class="text-center">${index + 1}</td>
             <td>${data.nome}</td>
             <td class="text-center cpf_cnpj">${data.cpf_cnpj}</td>
-            <td class="text-center">${data.email ? data.email : '-'}</td>
-            <td class="text-center">${data.telefone ? data.telefone : '-'}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
               <a href="sistema.php?page=cadastro_cliente_endereco&cliente_id=${base64enc(data.id)}" class="btn btn-save" title="ENDEREÇOS">

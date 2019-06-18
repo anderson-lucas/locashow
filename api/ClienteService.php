@@ -11,7 +11,7 @@ function getCliente(array $data = [])
         $where = "WHERE nome LIKE '%{$data['search']}%'";
     }
 
-    $sql = "SELECT DATE_FORMAT(cliente.created_at, '%d/%m/%Y %H:%i:%s') AS created
+    $sql = "SELECT DATE_FORMAT(cliente.created_at, '%d/%m/%Y %H:%i') AS created
                 , cliente.* 
             FROM cliente 
             {$where}

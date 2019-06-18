@@ -16,8 +16,6 @@
       <th width="5%">#</th>
       <th class="text-left">Nome</th>
       <th width="10%">CPF / CPNJ</th>
-      <th width="12%">E-mail</th>
-      <th width="12%">Telefone</th>
       <th width="12%">Cadastrado em</th>
       <th width="14%">Opções</th>
     </tr>
