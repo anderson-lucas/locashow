@@ -1,2 +1,2 @@
 <?php
-    header('Location: /locashow/login.php');
+    header('Location: /login.php');
