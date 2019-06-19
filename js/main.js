@@ -1,4 +1,8 @@
-const API_URL = '/api.php/';
+if (window.location.hostname == 'localhost') {
+  const API_URL = '/locashow/api.php/';
+} else {
+  const API_URL = '/api.php/';
+}
 moment.locale('pt-br');
 
 var base64enc = function(value) {
