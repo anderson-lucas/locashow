@@ -1,8 +1,10 @@
 if (window.location.hostname == 'localhost') {
-  const API_URL = '/locashow/api.php/';
+  url = '/locashow/api.php/';
 } else {
-  const API_URL = '/api.php/';
+  url = '/api.php/';
 }
+const API_URL = url;
+
 moment.locale('pt-br');
 
 var base64enc = function(value) {
