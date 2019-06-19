@@ -1,4 +1,4 @@
-const API_URL = '/locashow/api.php/';
+const API_URL = '/api.php/';
 moment.locale('pt-br');
 
 var base64enc = function(value) {
