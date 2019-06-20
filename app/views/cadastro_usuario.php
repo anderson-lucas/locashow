@@ -50,16 +50,6 @@
   <a href="sistema.php?page=usuarios" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
 </div>
 
-<style type="text/css">
-  .form-control {
-    width: 50%;
-  }
-
-  .alert {
-    width: 50%;
-  }
-</style>
-
 <form class="form-default" method="POST" action="app/controllers/UsuarioController.php">
 
   <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">

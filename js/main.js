@@ -1,9 +1,4 @@
-if (window.location.hostname == 'localhost') {
-  url = '/locashow/api.php/';
-} else {
-  url = '/api.php/';
-}
-const API_URL = url;
+const API_URL = '/locashow/api.php/';
 
 moment.locale('pt-br');
 

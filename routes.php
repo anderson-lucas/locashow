@@ -155,4 +155,30 @@ $routes = [
             'service' => 'api/BoletoService.php',
         ]
     ],
+    'usuarios' => [
+        [
+            'method' => GET,
+            'route' => 'usuarios',
+            'function' => 'getUsuario',
+            'service' => 'api/UsuarioService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'usuarios',
+            'function' => 'setUsuario',
+            'service' => 'api/UsuarioService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'usuario-change-password',
+            'function' => 'changePassword',
+            'service' => 'api/UsuarioService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'usuarios',
+            'function' => 'deleteUsuario',
+            'service' => 'api/UsuarioService.php',
+        ]
+    ],
 ];

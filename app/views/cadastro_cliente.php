@@ -6,16 +6,6 @@
   <a href="sistema.php?page=clientes" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
 </div>
 
-<style type="text/css">
-  .form-control, .alert {
-    width: 50%;
-  }
-
-  .alert {
-    width: 50%;
-  }
-</style>
-
 <form id="form_cliente" class="form-default" method="POST" novalidate>
 
   <div class="form-group text-center alert alert-error" hidden>

@@ -118,7 +118,7 @@ table.table td {
   line-height: 1.5;
   border: 1px solid #ced4da;
   border-radius: 5px;
-  width: -webkit-fill-available;
+  width: 50%;
 }
 
 select.form-control {
@@ -133,7 +133,7 @@ select.form-control {
   padding: 10px;
   border: 1px #a5a0a0 solid;
   border-radius: 3px;
-  width: -webkit-fill-available;
+  width: 50%;
 }
 
 .alert.alert-error {

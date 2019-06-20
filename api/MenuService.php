@@ -9,7 +9,7 @@ function getMenus()
             JOIN grupo ON grupo.id = usuario_grupo.grupo_id
             JOIN grupo_menu ON grupo_menu.grupo_id = grupo.id
             JOIN menu ON menu.id = grupo_menu.menu_id
-            WHERE md5(usuario_grupo.usuario_id) = '{$_SESSION['id']}'
+            WHERE usuario_grupo.usuario_id = {$_SESSION['id']}
             ORDER BY menu.ordem, menu.nome, menu.created_at desc";
 
     $menus = [];

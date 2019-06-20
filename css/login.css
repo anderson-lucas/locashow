@@ -20,6 +20,10 @@ body {
   margin: auto;
 }
 
+.form-control {
+  width: -webkit-fill-available;
+}
+
 .img-logo {
   width: 25%;
   padding-bottom: 20px;

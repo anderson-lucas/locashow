@@ -12,7 +12,7 @@ body {
 }
 
 .header {
-  height: 80px;
+  height: 86px;
   width: 100%;
 }
 
@@ -29,6 +29,7 @@ h1 {
   overflow: hidden;
   height: calc(100vh - 80px);
   display: flex;
+  width: -webkit-fill-available;
 }
 
 .sidebar {
@@ -100,4 +101,8 @@ img.logo {
 
 *:focus {
   outline: none;
+}
+
+#usuario_logado {
+  font-family: 'Titillium Web', sans-serif;
 }

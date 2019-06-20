@@ -31,7 +31,7 @@
       <h1>LOCASHOW</h1>
     </div>
     <div class="menu-right">
-      <a href="sistema.php?page=perfil&id=<?php echo $_SESSION['id']; ?>" title="PERFIL"><i class="fas fa-user"></i> <?php echo strtoupper($_SESSION['nome']); ?></a>
+      <a href="sistema.php?page=perfil" title="PERFIL"><i class="fas fa-user"></i> <span id="usuario_logado"><?php echo strtoupper($_SESSION['nome']); ?></span></a>
       <a href="logout.php" title="SAIR"><i class="fas fa-sign-out-alt" style="padding-right: 13px;"></i></a>
     </div>
   </div>

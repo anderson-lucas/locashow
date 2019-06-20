@@ -25,14 +25,6 @@
 <script src="js/imoveis/cadastroImovelImagem.js"></script>
 
 <style type="text/css">
-  .form-control {
-    width: 50%;
-  }
-
-  .alert {
-    width: 50%;
-  }
-
   #fotos {
     margin-bottom: 20px;
     padding: 10px;

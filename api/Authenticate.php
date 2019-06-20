@@ -18,7 +18,7 @@ function auth($data)
 	if (count($usuario) > 0) {
 		session_start();
         $_SESSION = [
-            'id' => $usuario[0]['hash_id'],
+            'id' => $usuario[0]['id'],
             'nome' => $usuario[0]['nome'],
             'email' => $usuario[0]['email'],
         ];
