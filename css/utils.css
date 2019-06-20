@@ -2,8 +2,9 @@ table.table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
-  overflow-x: auto;
-  display: inline-table;
+  overflow: auto;
+  display: block;
+  height: auto;
 }
 
 table.table, th, td {
