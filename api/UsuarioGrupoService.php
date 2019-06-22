@@ -1,28 +1,19 @@
 <?php
 
-function createUsuarioGrupo($data)
+function getUsuarioGrupo(array $data)
 {
-    global $mysqli;
+    $sql = "SELECT grupo.id
+                    , grupo.nome
+                    , COALESCE((SELECT 1 FROM usuario_grupo WHERE usuario_grupo.grupo_id = grupo.id AND usuario_grupo.usuario_id = {$data['usuario_id']}),0) AS vinculado
+            FROM grupo";
+    $usuario_grupo = get($sql);
+    return ['data' => $usuario_grupo, 'status' => 200];
+}
 
-    $sql_count = "SELECT 1 FROM usuario_grupo WHERE usuario_id = {$data['usuario_id']} AND grupo_id = {$data['grupo_id']}";
-    if ($result = $mysqli->query($sql_count)) {
-        if ($result->num_rows > 0) {
-            $result->free();
-            return ['message' => 'Grupo já vinculado!', 'status' => 200];
-        }
-    }
-
-    $sql = "INSERT INTO usuario_grupo (usuario_id, grupo_id) VALUES ({$data['usuario_id']}, {$data['grupo_id']})";
-    $status = 200;
-    $message = [];
-    if (! $mysqli->query($sql)) {
-        $message = 'Erro ao inserir! ERRO: '.$mysqli->error;
-        $status = 400;
-    } else {
-        $message = 'Sucesso!';
-    }
-
-    return ['data' => $message, 'status' => $status];
+function setUsuarioGrupo(array $data)
+{
+    $return = set('usuario_grupo', $data);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }
 
 function deleteUsuarioGrupo($parameters)

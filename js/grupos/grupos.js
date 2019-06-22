@@ -1,11 +1,11 @@
 function getAll() {
-  ajax('usuarios').then(function(data) {
+  ajax('grupos').then(function(data) {
     populateTable(data.data);
   });
 }
 
 function populateTable(data) {
-  cleanTable('tabela_usuarios');
+  cleanTable('tabela_grupos');
   showLoading();
   setTimeout(function() {
     var row = '';
@@ -15,17 +15,15 @@ function populateTable(data) {
           <tr>
             <td class="text-center">${index + 1}</td>
             <td>${data.nome}</td>
-            <td class="text-center">${data.login}</td>
-            <td class="text-center">${data.email}</td>
             <td class="text-center">${data.created}</td>
             <td class="text-center">
-              <a href="sistema.php?page=cadastro_usuario_grupo&usuario_id=${base64enc(data.id)}" class="btn btn-warning" title="GRUPOS">
-                <i class="fas fa-user-cog"></i>
+              <a href="sistema.php?page=cadastro_grupo_menu&grupo_id=${base64enc(data.id)}" class="btn btn-warning" title="PERMISSÕES">
+                <i class="fas fa-unlock-alt"></i>
               </a>
-              <a href="sistema.php?page=cadastro_usuario&id=${base64enc(data.id)}" class="btn btn-edit" title="EDITAR">
+              <a href="sistema.php?page=cadastro_grupo&id=${base64enc(data.id)}" class="btn btn-edit" title="EDITAR">
                 <i class="fas fa-pencil-alt"></i>
               </a>
-              <button class="btn btn-danger" title="EXCLUIR" onclick="askBeforeDelete(${data.id}, 'usuarios')">
+              <button class="btn btn-danger" title="EXCLUIR" onclick="askBeforeDelete(${data.id}, 'grupos')">
                 <i class="fas fa-trash-alt"></i>
               </button>
             </td>
@@ -36,8 +34,8 @@ function populateTable(data) {
       row = `<tr><td class="text-center" colspan="7">Nenhum registro encontrado</td></tr>`;
     }
 
-    cleanTable('tabela_usuarios');
-    $("#tabela_usuarios tbody").append(row);
+    cleanTable('tabela_grupos');
+    $("#tabela_grupos tbody").append(row);
     hideLoading();
   }, 1000);
 }

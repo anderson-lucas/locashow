@@ -113,34 +113,6 @@ $routes = [
             'service' => 'api/ContratoService.php',
         ]
     ],
-    'grupo-menu' => [
-        [
-            'method' => POST,
-            'route' => 'grupo-menu',
-            'function' => 'createGrupoMenu',
-            'service' => 'api/GrupoMenuService.php',
-        ],
-        [
-            'method' => DELETE,
-            'route' => 'grupo-menu',
-            'function' => 'deleteGrupoMenu',
-            'service' => 'api/GrupoMenuService.php',
-        ]
-    ],
-    'usuario-grupo' => [
-        [
-            'method' => POST,
-            'route' => 'usuario-grupo',
-            'function' => 'createUsuarioGrupo',
-            'service' => 'api/UsuarioGrupoService.php',
-        ],
-        [
-            'method' => DELETE,
-            'route' => 'usuario-grupo',
-            'function' => 'deleteUsuarioGrupo',
-            'service' => 'api/UsuarioGrupoService.php',
-        ]
-    ],
     'boletos' => [
         [
             'method' => GET,
@@ -153,6 +125,40 @@ $routes = [
             'route' => 'boletos',
             'function' => 'deleteBoleto',
             'service' => 'api/BoletoService.php',
+        ]
+        ],
+    'grupos' => [
+        [
+            'method' => GET,
+            'route' => 'grupos',
+            'function' => 'getGrupo',
+            'service' => 'api/GrupoService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'grupos',
+            'function' => 'setGrupo',
+            'service' => 'api/GrupoService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'grupos',
+            'function' => 'deleteGrupo',
+            'service' => 'api/GrupoService.php',
+        ]
+    ],
+    'grupo-menu' => [
+        [
+            'method' => POST,
+            'route' => 'grupo-menu',
+            'function' => 'createGrupoMenu',
+            'service' => 'api/GrupoMenuService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'grupo-menu',
+            'function' => 'deleteGrupoMenu',
+            'service' => 'api/GrupoMenuService.php',
         ]
     ],
     'usuarios' => [
@@ -181,4 +187,24 @@ $routes = [
             'service' => 'api/UsuarioService.php',
         ]
     ],
+    'usuario-grupo' => [
+        [
+            'method' => GET,
+            'route' => 'usuario-grupo',
+            'function' => 'getUsuarioGrupo',
+            'service' => 'api/UsuarioGrupoService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'usuario-grupo',
+            'function' => 'setUsuarioGrupo',
+            'service' => 'api/UsuarioGrupoService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'usuario-grupo',
+            'function' => 'deleteUsuarioGrupo',
+            'service' => 'api/UsuarioGrupoService.php',
+        ]
+    ]
 ];

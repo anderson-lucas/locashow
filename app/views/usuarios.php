@@ -3,7 +3,8 @@
 </div>
 
 <div style="margin-bottom: 20px;">
-  <a href="sistema.php?page=cadastro_cliente" class="btn btn-save"><i class="fas fa-plus"></i> Adicionar</a>
+  <a href="sistema.php?page=configuracoes" class="btn"><i class="fas fa-chevron-left"></i> Voltar</a>
+  <a href="sistema.php?page=cadastro_usuario" class="btn btn-save"><i class="fas fa-plus"></i> Adicionar</a>
 
   <div class="search" style="float: right;">
     <input type="text" id="search" class="form-control" source="usuarios" placeholder="Pesquisar">
