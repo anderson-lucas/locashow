@@ -1,18 +1,18 @@
-var usuario_id = parseInt(base64dec(getUrlParam('usuario_id')));
+var grupo_id = parseInt(base64dec(getUrlParam('grupo_id')));
 
 function getAll() {
-  ajax('usuarios', {id: usuario_id}).then(function(response) {
-    cliente = response.data[0];
-    $("#infoUsuario").html(`${cliente.nome} (${cliente.login})`);
+  ajax('grupos', {id: grupo_id}).then(function(response) {
+    grupo = response.data[0];
+    $("#infoGrupo").html(grupo.nome);
   });
 
-  ajax('usuario-grupo', {usuario_id: usuario_id}).then(function(data) {
+  ajax('grupo-menu', {grupo_id: grupo_id}).then(function(data) {
     populateTable(data.data);
   });
 }
   
 function populateTable(data) {
-  cleanTable('tabela_usuario_grupo');
+  cleanTable('tabela_grupo_menu');
   showLoading();
   setTimeout(function() {
     var row = '';
@@ -24,7 +24,7 @@ function populateTable(data) {
             <td>${data.nome}</td>
             <td class="text-center">
               <label class="switch">
-                <input type="checkbox" onclick="toggleGrupo(this.checked, ${data.id})" ${isVinculado?'checked':''}>
+                <input type="checkbox" onclick="toggleMenu(this.checked, ${data.id})" ${isVinculado?'checked':''}>
                 <span class="slider round"></span>
               </label>
             </td>
@@ -33,21 +33,21 @@ function populateTable(data) {
       });
     }
 
-    $("#tabela_usuario_grupo tbody").append(row);
+    $("#tabela_grupo_menu tbody").append(row);
     hideLoading();
   }, 1000);
 }
 
-function toggleGrupo(checked, grupo_id) {
-  return checked ? addGrupo(grupo_id) : deleteGrupo(grupo_id);
+function toggleMenu(checked, menu_id) {
+  return checked ? addMenu(menu_id) : deleteMenu(menu_id);
 }
 
-function deleteGrupo(grupo_id) {
-  return ajax('usuario-grupo', null, 'DELETE', `${usuario_id}/${grupo_id}`);
+function deleteMenu(menu_id) {
+  return ajax('grupo-menu', null, 'DELETE', `${grupo_id}/${menu_id}`);
 }
 
-function addGrupo(grupo_id) {
-  return ajax('usuario-grupo', {usuario_id: usuario_id, grupo_id: grupo_id}, 'POST');
+function addMenu(menu_id) {
+  return ajax('grupo-menu', {grupo_id: grupo_id, menu_id: menu_id}, 'POST');
 }
-  
+
 getAll();

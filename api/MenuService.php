@@ -22,3 +22,36 @@ function getMenus()
 
     return $menus;
 }
+
+function getMenu(array $data = [])
+{
+    $where = '';
+    if (isset($data['id'])) {
+        $where = "WHERE id = {$data['id']}";
+    }
+
+    if (isset($data['search'])) {
+        $where = "WHERE nome LIKE '%{$data['search']}%'";
+    }
+
+    $sql = "SELECT DATE_FORMAT(menu.created_at, '%d/%m/%Y %H:%i') AS created
+                , menu.* 
+            FROM menu 
+            {$where}
+            ORDER BY menu.ordem, menu.nome";
+    $menus = get($sql);
+    return ['data' => $menus, 'status' => 200]; 
+}
+
+function setMenu(array $data)
+{
+    $return = set('menu', $data);
+    return ['data' => $return['message'], 'status' => $return['status']];
+}
+
+function deleteMenu(array $data)
+{
+    $where = "WHERE id = {$data['id']}";
+    $return = delete('menu', $where);
+    return ['data' => $return['message'], 'status' => $return['status']];
+}

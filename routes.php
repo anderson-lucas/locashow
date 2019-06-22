@@ -149,9 +149,15 @@ $routes = [
     ],
     'grupo-menu' => [
         [
+            'method' => GET,
+            'route' => 'grupo-menu',
+            'function' => 'getGrupoMenu',
+            'service' => 'api/GrupoMenuService.php',
+        ],
+        [
             'method' => POST,
             'route' => 'grupo-menu',
-            'function' => 'createGrupoMenu',
+            'function' => 'setGrupoMenu',
             'service' => 'api/GrupoMenuService.php',
         ],
         [
@@ -205,6 +211,26 @@ $routes = [
             'route' => 'usuario-grupo',
             'function' => 'deleteUsuarioGrupo',
             'service' => 'api/UsuarioGrupoService.php',
+        ]
+    ],
+    'menus' => [
+        [
+            'method' => GET,
+            'route' => 'menus',
+            'function' => 'getMenu',
+            'service' => 'api/MenuService.php',
+        ],
+        [
+            'method' => POST,
+            'route' => 'menus',
+            'function' => 'setMenu',
+            'service' => 'api/MenuService.php',
+        ],
+        [
+            'method' => DELETE,
+            'route' => 'menus',
+            'function' => 'deleteMenu',
+            'service' => 'api/MenuService.php',
         ]
     ]
 ];

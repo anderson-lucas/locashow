@@ -20,7 +20,6 @@ function getImovel(array $data = [])
             {$where} 
             ORDER BY descricao";
     $imoveis = get($sql);
-
     return ['data' => $imoveis, 'status' => 200]; 
 }
 

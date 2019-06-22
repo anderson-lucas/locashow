@@ -22,20 +22,19 @@ function getBoleto(array $data = [])
             JOIN cliente ON contrato.cliente_id = cliente.id
             {$where} 
             ORDER BY boleto_cliente.dt_vencimento";
-    $imoveis = get($sql);
-
-    return ['data' => $imoveis, 'status' => 200]; 
+    $boletos = get($sql);
+    return ['data' => $boletos, 'status' => 200]; 
 }
 
-function setImovel(array $data)
+function setBoleto(array $data)
 {
-    $return = set('imovel', $data);
+    $return = set('boleto_cliente', $data);
     return ['data' => $return['message'], 'status' => $return['status']];
 }
 
-function deleteImovel(array $data)
+function deleteBoleto(array $data)
 {
     $where = "WHERE id = {$data['id']}";
-    $return = delete('imovel', $where);
+    $return = delete('boleto_cliente', $where);
     return ['data' => $return['message'], 'status' => $return['status']];
 }

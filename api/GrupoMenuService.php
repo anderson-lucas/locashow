@@ -1,28 +1,19 @@
 <?php
 
-function createGrupoMenu($data)
+function getGrupoMenu(array $data)
 {
-    global $mysqli;
+    $sql = "SELECT menu.id
+                , menu.nome
+                , COALESCE((SELECT 1 FROM grupo_menu WHERE grupo_menu.menu_id = menu.id AND grupo_menu.grupo_id = {$data['grupo_id']}),0) AS vinculado
+            FROM menu";
+    $grupo_menu = get($sql);
+    return ['data' => $grupo_menu, 'status' => 200];
+}
 
-    $sql_count = "SELECT 1 FROM grupo_menu WHERE grupo_id = {$data['grupo_id']} AND menu_id = {$data['menu_id']}";
-    if ($result = $mysqli->query($sql_count)) {
-        if ($result->num_rows > 0) {
-            $result->free();
-            return ['message' => 'Menu já vinculado!', 'status' => 200];
-        }
-    }
-
-    $sql = "INSERT INTO grupo_menu (grupo_id, menu_id) VALUES ({$data['grupo_id']}, {$data['menu_id']})";
-    $status = 200;
-    $message = [];
-    if (! $mysqli->query($sql)) {
-        $message = 'Erro ao inserir! ERRO: '.$mysqli->error;
-        $status = 400;
-    } else {
-        $message = 'Sucesso!';
-    }
-
-    return ['data' => $message, 'status' => $status];
+function setGrupoMenu(array $data)
+{
+    $return = set('grupo_menu', $data);
+    return ['data' => $return['message'], 'status' => $return['status']];
 }
 
 function deleteGrupoMenu($parameters)
