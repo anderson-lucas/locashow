@@ -232,5 +232,13 @@ $routes = [
             'function' => 'deleteMenu',
             'service' => 'api/MenuService.php',
         ]
+    ],
+    'logs_acesso' => [
+        [
+            'method' => GET,
+            'route' => 'logs_acesso',
+            'function' => 'getLogAcesso',
+            'service' => 'api/LogAcesso.php',
+        ]
     ]
 ];

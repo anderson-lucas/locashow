@@ -269,7 +269,8 @@ VALUES
 ("Imóveis", "imoveis", "fas fa-building", 3),
 ("Contratos", "contratos", "fas fa-file-contract", 4),
 ("Configurações", "configuracoes", "fas fa-cog", 5),
-("Teste Api", "teste_api", "fas fa-code", 6);
+("Teste Api", "teste_api", "fas fa-code", 6),
+("Logs de acesso", "logs_acesso", "user-clock", 7);
 
 INSERT INTO `grupo` (`nome`) 
 VALUES
